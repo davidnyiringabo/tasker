@@ -1,0 +1,117 @@
+.overviewTasksContainer{
+    width: 100%;
+    height: 58%;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+.tasks-upper-header{
+    width: 93%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2%;
+}
+.tasks-upper-header-left{
+    width: 40%;
+    height: 80%;
+    text-align: left;
+}
+.tasks-upper-header-left h3{
+    font-size: 20px;
+    color: #001833;
+    padding: 3%;
+}
+.tasks-upper-header-left h5{
+    font-size: 15px;
+    color: #333;
+    padding: 0 3%;
+
+}
+.tasks-upper-header button{
+    width: 50%;
+    height: 50%;
+    text-align: right;
+    vertical-align: top;
+    background: transparent;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+.singleTask{
+    width: 90%;
+    height: 50%;
+    /* border: 1px solid blue; */
+    margin-bottom: 3%;
+    display: flex;
+    flex-direction: column;
+    gap: 8%;
+    padding: 3% 1%;
+    background: #e1e9f1;
+    border-radius: 10px;
+}
+.single-task-upper{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+}
+.single-task-upper h3{
+    font-size: 17px;
+}
+.singleTask h4{
+    font-size: 14px;
+    color: #333;
+    font-family: sans-serif;
+    padding-left: 1%;
+}
+.taskCategory{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    gap: 1%;
+}
+.taskCategory img{
+    height: 60%;
+}
+.single-task-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+.single-task-bottom-left{
+    width: 40%;
+}
+.single-task-bottom-left h5{
+        font-size: 15px;
+        font-family: sans-serif;
+}
+.single-task-bottom-left h6{
+    font-size: 12px;
+    font-family: sans-serif;
+    color: #333;
+    padding-left: 1%;
+}
+
+.single-task-bottom-right{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 4%;
+}
+.single-task-bottom-right button{
+    width: 30%;
+    height: 100%;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 2% 0;
+}

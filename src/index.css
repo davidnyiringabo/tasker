@@ -1,0 +1,13 @@
+#root {
+  width: 98.7vw;
+  min-height: 100vh;
+  background: #001833;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.darkMode:root{
+  background: red;
+}

@@ -1,0 +1,377 @@
+.container-main{
+    width: 100%;
+    height: 150vh;
+    
+    display: flex;
+    position: relative;
+}
+.sidebar-left{
+    width: 20vw;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar-header{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: #fff;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+
+}
+.sidebar-header Link h4{
+    text-decoration: none;
+    color: #EEF3F9;
+    display: flex;
+}
+.sidebar-header img{
+    width: 40%;
+}
+.button-container{
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2%;
+    font-size: 18px;
+}
+
+
+.side-upper{
+    width: 100%;
+    height: 34%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 9%;
+    gap: 9%;
+}
+
+.side-button{
+    width: 70%;
+    height: 100%;
+    padding-left: 3%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 2%;
+    background: transparent;
+    border-radius: 10px;
+    color: #fff;
+    border: none;
+    font-weight: 800;
+    text-decoration: none;
+}
+.side-middle{
+    width: 70%;
+    height: 45%;
+    display: flex;
+    justify-content: left;
+    align-items: end;
+}
+.side-bottom{
+    width: 70%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 20%;
+}
+.side-button-middle{
+    width: 70%;
+    height: 15%;
+    background: transparent;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    margin-bottom: 10%;
+    background-color: #0075FF;
+    font-weight: 800;
+    border: none;
+}
+.side-button-middle img{
+    width: 14%;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.side-button-bottom{
+    width: 90%;
+    height: 30%;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 3%;
+    font-weight: 800;
+}
+.side-button-bottom img{
+    width: 10%;
+}
+
+.active{
+    background: #0075FF;
+    border: none;
+}
+
+.container-right{
+    width: 78vw;
+    height: 97%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #EEF3F9;
+    border-radius: 20px;
+    margin-top: 1%;
+}
+
+.hero-container{
+    width: 67%;
+    height: 100%;
+}
+
+.right-side-container{
+    width: 30%;
+    height: 97%;
+    /* border: 1px solid orange; */
+    border-radius: 10px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.upper-card{
+    width: 100%;
+    height: 13%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10%;
+    margin-top: 3%;
+}
+.upper-card img{
+    width: 40%;
+}
+.upper-card h6{
+    color: #5d5b5b;
+    font-size: 16px;
+}
+.upper-card h3{
+    font-size: 23px;
+}
+.calendar-container{
+    width: 100% !important;
+    height: 40%;
+    margin-top: 25%;
+}
+
+.recent-tasks{
+    width: 100%;
+    height: 30%;
+    /* border: 1px solid orange; */
+    /* margin-top: 10%; */
+}
+.link{
+    width: 100%;
+    display: none;
+}
+
+.naigationBar{
+    width: 100%;
+    height: 12%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-top: -1.7%;
+    gap: 4%;
+}
+
+.searchContainer{
+    width: 80%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.searchplacehd{
+    width: 100%;
+    height: 80%;
+    background: #fff;
+    padding-left: 5%;
+    color: black;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.searchplacehd::placeholder{
+    color: rgb(80, 77, 77);
+}
+
+.searchContainer a{
+    width: 3%;
+    position: absolute;
+    bottom: 60%;
+    left: 1%;
+
+    z-index: 1;
+}
+.searchContainer a img{
+    width: 100%;
+    position: absolute;
+    /* left: 9%; */
+}
+.notificationsTop, .settingsTop{
+    width: 8%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    justify-content: center;
+    border-radius: 10px;
+}
+.renderedpageContainer{
+    width:100%;
+    height: 86%;
+}
+
+.modelContainer,.overlay{
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background: #ccc9c932;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+body.active-model {
+    overflow-y: hidden;
+}
+
+.addTaskmodelContent{
+    width: 40%;
+    height: 60%;
+    gap: 2%;
+    position: absolute;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-family: sans-serif;
+    font-weight:normal;
+}
+.add-task-model-header{
+    width: 90%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+}
+.add-task-model-header button{
+    width: 10%;
+    height: 80%;
+    background: transparent;
+    border: none;
+    /* margin-right: 10%; */
+}
+.add-task-model-header button img{
+    cursor: pointer;
+}
+.addTaskFormContainer{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addTaskForm{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.description{
+    width: 100%;
+    height: 34%;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+}
+.description input{
+    width: 90%;
+    height: 70%;
+    border: 2px solid #777777b4;
+    color: rgba(0, 0, 0, 0.379);
+    font-size: 17px;
+}
+.description input::placeholder{
+    color: black;
+    font-size: 17px;
+}
+
+.category{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    font-family: sans-serif;
+    gap: 10%;
+}
+.category select{
+    width: 58%;
+    height: 44%;
+    outline: 1px solid #777777b4;
+    border-radius: 5px;
+}
+.deadline{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+}
+.deadline input{
+    width: 88%;
+    height: 50%;
+    border: 2px solid #777777b4;
+    color: #000;
+    padding-right: 2%;
+}
+.addTaskSubmit{
+    width: 27%;
+    height: 12%;
+    background: #0075FF;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 17px;
+    margin-top: 1%;
+}
+
+.darkMode{
+    background: #0F1E30;
+}

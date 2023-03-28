@@ -1,0 +1,102 @@
+.settingsContainer{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+.settings-header{
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    color: #0b2746;
+    padding-top: 2%;
+    font-size: 18px;
+}
+.settingsContentContainer{
+    width: 90%;
+    height: 80%;
+}
+.color-theme{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center; 
+    gap: 4%;
+}
+.color-theme h4{
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.color-theme button {
+    width: 20%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    border: none;
+    font-size: 17px;
+    font-weight: 700;
+    justify-content: center;
+    border-radius: 10px;
+}
+.language{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    gap: 4%;
+}
+.language select{
+    width: 50%;
+    height: 30%;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid rgba(22, 37, 51, 0.466);
+    border-radius: 5px;
+}
+select:focus{
+    outline: 1px solid #0b2746;
+
+}
+.data-policy{
+    width: 100%;
+    height: 13%;
+    margin-top: 2%;
+
+}
+.access-data,.terms-of-service,.about,.logout{
+    width: 100%;
+    height: 13%;
+}
+
+
+.button-data-policy, .access-data-button,.terms-of-services,.about-button,.logout-button{
+    width:20%;
+    height:60%;
+    font-size:17px;
+    font-weight:700;
+    border:1px solid #4d4d4e;
+    border-radius:10px;
+    text-align: left;
+    padding-left: 2%;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+}
+.terms-of-services{
+    width: 30%;
+}
+.button-data-policy:hover,.access-data-button:hover,.terms-of-services:hover,.about-button:hover,.logout-button:hover{
+  background: #78ade9;
+  border: none;
+}
+.logout-button:hover{
+    background: #BA4A4A;
+}

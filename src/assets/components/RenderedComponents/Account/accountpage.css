@@ -1,0 +1,83 @@
+
+.accountCredentialsContainer{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+.account-header{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #082546;
+}
+.profileFormcontainer{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+}
+.profileForm{
+    width: 85%;
+    height: 100%;
+    /* border: 1px solid #082546; */
+}
+.uploadPhoto{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    gap: 4%;
+}
+.right-upload-photo{
+    width: 40%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 17%;
+}
+.right-upload-photo button{
+    width: 70%;
+    height: 35%;
+    background: transparent;
+    border: 1px solid #BA4A4A;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #BA4A4A;
+}
+.upload-form-control{
+    width: 100%;
+    height: 18%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+.upload-form-control label{
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: 400;
+}
+.upload-form-control input{
+    width: 90%;
+    height: 44%;
+    border: 1px solid #656565;
+    color: #363535;
+    font-size: 18px;
+}
+.upload-form-control input::placeholder{
+    color: #363535;
+    font-size: 18px;
+}
+.uploadProfileSubmit{
+    width: 27%;
+    height: 8%;
+    margin-top: 1%;
+    background: #0075FF;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+}
