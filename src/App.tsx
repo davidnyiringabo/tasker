@@ -16,17 +16,18 @@ import NotificationsPage from './assets/components/RenderedComponents/Notificati
 import { ToastContainer } from 'react-toastify'
 
 function App() {
+  const [viewAllTasksModal,setViewAllTasksModal] = useState(false)  
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
-        <Route path='/main' element={<Home><Overview/></Home>}/>
+        <Route path='/main' element={<Home><Overview /></Home>}/>
         <Route path='/main/overview' element={<Home><Calendar/></Home>}/>
         <Route path='/main/calendar' element={<Home><Page/></Home>}/>
         <Route path='/main/settings' element={<Home><SettingsPage/></Home>}/>
-        <Route path='/main/tasks' element={<Home><TasksPage/></Home>}/>
+        <Route path='/main/tasks' element={<Home><TasksPage viewAllTasksModal={viewAllTasksModal} setViewAllTasksModal={setViewAllTasksModal}/></Home>}/>
         <Route path='/main/account' element={<Home><AccountPage/></Home>}/>
         <Route path='/main/notifications' element={<Home><NotificationsPage/></Home>}/>
       </Routes>

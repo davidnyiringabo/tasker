@@ -257,9 +257,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    z-index: 9;
 }
-
 body.active-model {
     overflow-y: hidden;
 }
@@ -277,6 +276,28 @@ body.active-model {
     border-radius: 10px;
     font-family: sans-serif;
     font-weight:normal;
+    z-index: 99;
+}
+
+.viewTasksmodelContent{
+    width: 60%;
+    height: 93%;
+    gap: 2%;
+    position: absolute;
+    background: #0075FF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    font-family: sans-serif;
+    font-weight:normal;
+    padding-top: 2%;
+    /* overflow: auto; */
+
+}
+.alltaskscontainer{
+    width: 80%;
+    height: 100%;
 }
 .add-task-model-header{
     width: 90%;

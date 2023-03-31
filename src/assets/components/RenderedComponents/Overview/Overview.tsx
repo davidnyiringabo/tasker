@@ -1,18 +1,15 @@
 import { Doughnut } from 'react-chartjs-2';
 import Chart from 'chart.js';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import TasksComponents from "../../TasksComponets"
 import Chartco from '../../Charts/Line';
 import DoughnutChat from '../../Charts/Doughnut';
+import AllTasks from '../../AllTasks';
 
 import "./overview.css"
 
-interface Props {
-  todayDate: number
-}
-
 const Calendar = ()=>{
-
+        const [viewAllTasksModal,setViewAllTasksModal] = useState(false)  
         const dateOb = new Date();
         const todayDateNumber = dateOb.getDay()
         const weekDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
@@ -37,7 +34,6 @@ const Calendar = ()=>{
         };
   
         const [tasks,setTasks]  = useState({})
-      
         return(
             <div className="overviewContainer">
                 <div className="chartContainer">
@@ -57,11 +53,29 @@ const Calendar = ()=>{
                         <h5>{today}, {todayDate} {thisMonth} {thisyeah}</h5>
                     </div>
 
-                    <button type='button'> View all tasks</button>                      
+                    <button type='button' onClick={()=>setViewAllTasksModal(true)} style={{cursor:'pointer'}}> View all tasks</button>                      
                   </div>
 
-                   <TasksComponents/>
+                   <TasksComponents />
                 </div>
+
+                {viewAllTasksModal && (
+                <div className="modelContainer">
+                    <div className="overlay">
+                        <div className="viewTasksmodelContent">
+                            <div className="view-task-model-header">
+                                <h2 style={{color:"#fff"}}>All tasks</h2>
+                                <button type='button' onClick={()=>setViewAllTasksModal(!viewAllTasksModal)} className="close-view-all-tasks-model">close</button>
+                            </div>
+                        <div className="alltaskscontainer">
+                            <AllTasks />
+                        </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            )}
 
             </div>
         )

@@ -29,3 +29,23 @@
     justify-content: center;
     gap: 2%;
 }
+
+.view-task-model-header{
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.close-view-all-tasks-model{
+    width: 9%;
+    height: 90%;
+    border: 1px solid rgb(236, 88, 88);
+    background: transparent;
+    border-radius: 7px;
+    color: #fff;
+    font-weight: 700;
+
+}
+.close-view-all-tasks-model:hover{
+    background: rgb(236, 88, 88);
+}

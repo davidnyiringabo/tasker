@@ -1,6 +1,13 @@
 import "./tasksPage.css"
 import TasksComponents from "../../TasksComponets"
-const TasksPage = ()=>{
+import React from "react";
+import AllTasks from "../../AllTasks";
+
+interface Props{
+  setViewAllTasksModal: Function,
+  viewAllTasksModal: boolean
+}
+const TasksPage:React.FC<Props> = ({setViewAllTasksModal,viewAllTasksModal})=>{
 
         const dateOb = new Date();
         const todayDateNumber = dateOb.getDay()
@@ -22,7 +29,7 @@ const TasksPage = ()=>{
                         <h5>{today}, {todayDate} {thisMonth} {thisyeah}</h5>
                     </div>
 
-                    <button type='button'> View all tasks</button>                      
+                    <button type='button' onClick={()=>setViewAllTasksModal(true)}> View all tasks</button>                      
                   </div>
 
                    <TasksComponents/>
@@ -37,6 +44,24 @@ const TasksPage = ()=>{
 
                    <TasksComponents/>
                 </div>
+
+                {viewAllTasksModal && (
+                    <div className="modelContainer">
+                        <div className="overlay">
+                            <div className="viewTasksmodelContent">
+                                <div className="view-task-model-header">
+                                    <h2 style={{color:"#fff"}}>All tasks</h2>
+                                    <button type='button' onClick={()=>setViewAllTasksModal(!viewAllTasksModal)} className="close-view-all-tasks-model">close</button>
+                                </div>
+                            <div className="alltaskscontainer">
+                                <AllTasks />
+                            </div>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+            )}
 
             </div>
     )

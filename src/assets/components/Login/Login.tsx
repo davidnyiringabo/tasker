@@ -8,30 +8,33 @@ import { toast } from "react-toastify"
 import {useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+const formemail = "nyiringabodavid@gmail.com"
 
 const Login = ()=>{
 
+    const [formEmail, setFormEmail] = useState("hello")
+    
     const navigate = useNavigate()
     const [formData,setFormData] = useState({
         email:'',
         password:''
       })
 
-    const handleChange = (e) => {
+    const handleChange = (e:any) => {
         const { name, value } = e.target;
         setFormData((prevState) => ({
           ...prevState,
           [name]: value,
         }));
+        const email = formData.email
+        setFormEmail(email)
       };
-      console.log(formData)
+    //   console.log(formData)
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = (e:any)=>{
         e.preventDefault();
         axios.post('http://localhost:7100/v1/api/login',formData)
                 .then((response)=>{
-                    console.log("submitted", response.status)
-
                     if(response.status == 200){
                         toast.success(response.data, {
                           position: "top-right",
@@ -42,11 +45,13 @@ const Login = ()=>{
                           draggable: true,
                           progress: undefined,
                           theme: "colored",
-                          });
+                          });      
               
                         setTimeout(()=>{
                           navigate("/main")
                         },1000)
+
+                   
                       }
                       else{
                         toast.error('Invalid email. please create account', {
@@ -61,6 +66,14 @@ const Login = ()=>{
                           });
                       }
                 })
+                .then((response)=>{
+                    console.log(response)
+                    setFormEmail(formData.email)
+                    console.log(formEmail)
+
+                    document.cookie = `email=${formEmail}`
+                }
+                )
                 .catch((err)=>{
                     toast.error('You are not authorised, invalid password', {
                         position: "top-right",
@@ -72,6 +85,7 @@ const Login = ()=>{
                         progress: undefined,
                         theme: "colored",
                         });
+                        console.log(err)
                 })
     }
 
@@ -133,5 +147,6 @@ const Login = ()=>{
         
     )
 }
+
 
 export default Login

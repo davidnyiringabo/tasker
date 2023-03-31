@@ -17,15 +17,20 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { useState,useEffect, ReactNode } from "react"
+import { useNavigate } from "react-router-dom"
 import crossx from "/x-circle.png"
 import axios from "axios"
+import AllTasks from "./assets/components/AllTasks"
 
 
 interface Props{
-    children: ReactNode;
+    children: ReactNode,
 }
 
 const Sidebars = ({children}: Props)=>{
+    const navigate = useNavigate()
+    const cookie= document.cookie.split('=')
+    const userLogginEmail = cookie[1]
 
     const [openModel, setOpenModel] = useState(false)
 
@@ -46,20 +51,25 @@ const Sidebars = ({children}: Props)=>{
     const [addTaskFormData, setAddTaskFormData] = useState({
         description: '',
         category: '',
-        deadline:''
+        deadline:'',
+        email: userLogginEmail,
+        timestamp: Date.now(),
+        completed: false
     })
 
-    const handleAddTaskSubmit = ()=>{
+    const handleAddTaskSubmit = (e:any)=>{
+
             axios.post("http://localhost:7100/v1/api/createTask",addTaskFormData)
                         .then((response)=>{
-                            console.log(response.data)
+                            console.log(response)
+
                         })
                         .catch((err)=>{
                             console.log(err)
                         })
     }
 
-    const handleChange = (e) => {
+    const handleChange = (e:any) => {
         const { name, value } = e.target;
         setAddTaskFormData((prevState) => ({
           ...prevState,
@@ -69,6 +79,21 @@ const Sidebars = ({children}: Props)=>{
         console.log(addTaskFormData)
       };
  
+      const [tasks,setTasks] = useState([
+    ]);
+
+    useEffect( ()=>{
+
+      axios.get(`http://localhost:7100/v1/api/tasks/${userLogginEmail}`)
+             .then((response)=>{
+              const userTasks = response.data
+
+              setTasks(userTasks)
+              console.log(response.data)
+
+             })
+    },[userLogginEmail])
+    const firstTasks = [tasks[0],tasks[1]]
     return(
         <div className="container-main" >
             <div className="sidebar-left"> 
@@ -108,15 +133,16 @@ const Sidebars = ({children}: Props)=>{
                             </div>
 
                             <div className="addTaskFormContainer">
-                                <form className="addTaskForm" method="post" onSubmit={handleAddTaskSubmit}>
+                                <form className="addTaskForm" onSubmit={handleAddTaskSubmit}>
                                     <div className="description">
                                         <label htmlFor="description">Description</label>
-                                        <input type="text" name="description" value={addTaskFormData.description} onChange={handleChange} id="description" placeholder="What's the task about?"/>
+                                        <input type="text" name="description" value={addTaskFormData.description} onChange={handleChange} id="description" placeholder="What's the task about?" required/>
                                     </div>
 
                                     <div className="category">
                                         <label htmlFor="category">Choose a category</label>
-                                        <select name="category" id="category" value={addTaskFormData.category} onChange={handleChange}>
+                                        <select name="category" id="category" value={addTaskFormData.category} onChange={handleChange} required>
+                                            <option value="work">--select---</option>
                                             <option value="work">Work</option>
                                             <option value="learning">Learning</option>
                                             <option value="home">Home</option>
@@ -125,8 +151,8 @@ const Sidebars = ({children}: Props)=>{
                                     </div>
 
                                     <div className="deadline">
-                                        <label htmlFor="deadline">Description</label>
-                                        <input type="date" name="deadline" value={addTaskFormData.deadline} onChange={handleChange} id="deadline" placeholder="choose a date"/>
+                                        <label htmlFor="deadline">Deadline</label>
+                                        <input type="date" name="deadline" value={addTaskFormData.deadline} onChange={handleChange} id="deadline" placeholder="choose a date" required/>
                                     </div>
 
                                     <button type="submit" className="addTaskSubmit">Finish</button>
@@ -136,8 +162,7 @@ const Sidebars = ({children}: Props)=>{
                         </div>
                     </div>
                 </div>
-            )}
-                
+            )}               
 
             <div className="container-right" id="maincontainer">
                 {/* -----------------------THIS IS GOING TO BE DYNAMICALLY RENDERED----------------------------------- */}

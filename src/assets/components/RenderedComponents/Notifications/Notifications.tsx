@@ -1,7 +1,10 @@
 import "./notificationspage.css"
 import crossx from "/x-circle.png"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 const NotificationsPage = ()=>{
+    const navigate = useNavigate()
     const [tasks,setTasks] = useState([
         {
             description: 'Go to job interview',
@@ -69,6 +72,25 @@ const NotificationsPage = ()=>{
     const clearNotifications = ()=>{
         setTasks([])
     }
+
+    const cookie= document.cookie.split('=')
+    const userLogginEmail = cookie[1]
+  
+      useEffect( ()=>{
+  
+        axios.get(`http://localhost:7100/v1/api/tasks/${userLogginEmail}`)
+               .then((response)=>{
+                const userTasks = response.data
+  
+                setTasks(userTasks)
+                console.log(response.data) 
+                console.log("removed")
+                // navigate('/main/overview') 
+               })
+
+              
+
+      },[userLogginEmail])
     return(
         <div className="notificationsContainer">
             <div className="notificationscontainer-header">
@@ -88,7 +110,13 @@ const NotificationsPage = ()=>{
                             <h3>Deadline for "{task.description}" is {task.deadline}</h3>
                         </div>
                     )
-                }): <h3 style={{marginTop:'9%'}}>There is no notification</h3>} 
+                }):(tasks.length == 1)? (
+                    <div className={`${read? "singleNotification read" : "singleNotification"}`}>
+                        <h5>{todayDate} {thisMonth} {thisyeah}</h5>
+                        <h3>Deadline for "{tasks[0].description}" is {tasks[0].deadline}</h3>
+                    </div>
+
+                ) : <h3 style={{marginTop:'9%'}}>There is no notification</h3>} 
             </div>
         </div>
     )

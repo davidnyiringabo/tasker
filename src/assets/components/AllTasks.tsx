@@ -5,16 +5,11 @@ import dot from "/dot.png"
 import trash from "/trash-2.png"
 import "./taskscomponents.css"
 import axios from "axios"
-import AllTasks from "./AllTasks"
-import { useNavigate } from "react-router-dom"
 
-const TasksContainer = ({})=>{
-  const navigate = useNavigate()
-  const[prompTheUserModel ,setPrompTheUserModel] = useState(false)
+const AllTasks = ()=>{
   const cookie= document.cookie.split('=')
   const userLogginEmail = cookie[1]
-
-const [deletedId ,setDeleteId] = useState("")
+  const[promptTheUserModel, setPromptTheUserModel] = useState(false)
 
   console.log(userLogginEmail)
 
@@ -34,27 +29,9 @@ const [deletedId ,setDeleteId] = useState("")
     },[userLogginEmail])
     const firstTasks = [tasks[0],tasks[1]]
 
-
-    const deleteTask = ()=>{
-
-      console.log("it is clicked")
-
-
-        axios.get(`http://localhost:7100/v1/api/deleteTask/${deletedId}`)
-               .then((response)=>{
-                console.log(response.data)
-               })
-               navigate("/main/tasks")
-      // },[userLogginEmail])
-
-      setPrompTheUserModel(false)
-
-
-    }
-
     return(
-        <div className='overviewTasksContainer'>
-                    {tasks.length > 1 ? firstTasks.map((task:any)=>{
+        <div className='viewAllTasksContainer'>
+                    {tasks.length > 1 ? tasks.map((task:any)=>{
                       return(
                     
                         <div className='singleTask'>
@@ -74,7 +51,7 @@ const [deletedId ,setDeleteId] = useState("")
                               </div>
                               <div className="single-task-bottom-right">
                                 <button type='button' style={{border:'1px solid #0075FF',color:'#0075FF'}}><img src={tick}/> Complete</button>
-                                <button type='button' style={{border:'1px solid #BA4A4A',color:'#BA4A4A'}}><img src={trash} onClick={()=>{setPrompTheUserModel(true); setDeleteId(task._id); console.log("it is deleted")}}/> Remove</button>
+                                <button type='button' style={{border:'1px solid #BA4A4A',color:'#BA4A4A'}}><img src={trash} onClick={()=>setPromptTheUserModel(true)}/> Remove</button>
                               </div>
                             </div>
                         </div>
@@ -82,7 +59,7 @@ const [deletedId ,setDeleteId] = useState("")
                     )
                     } ) : tasks.length ==1 ? (
                           (
-                         <div className='singleTask'>
+                         <div className='singleAlltask'>
                             <div className='single-task-upper'>
                               <h3>{tasks[0].description}</h3>
                               <h3>Completed {tasks[0].completed ? <img src={tick}/> : <img src={cross}/> }</h3>
@@ -99,34 +76,36 @@ const [deletedId ,setDeleteId] = useState("")
                               </div>
                               <div className="single-task-bottom-right">
                                 <button type='button' style={{border:'1px solid #0075FF',color:'#0075FF'}}><img src={tick}/> Complete</button>
-                                <button type='button' style={{border:'1px solid #BA4A4A',color:'#BA4A4A'}} onClick={()=>{setPrompTheUserModel(true); setDeleteId(tasks[0]._id)}}><img src={trash}/> Remove</button>
+                                <button type='button' style={{border:'1px solid #BA4A4A',color:'#BA4A4A'}} onClick={()=>console.log("it is clicked")}><img src={trash}/> Remove</button>
                               </div>
                             </div>
                         </div>
                       )
                       ) : <h3>There is no task yet</h3>}
 
-                  {prompTheUserModel && (
-                    <div className="modelContainer">
-                        <div className="overlay">
-                            <div className="promp-user-container">
-                                <div className="promp-model-header">
-                                    <button type='button' onClick={()=>setPrompTheUserModel(!prompTheUserModel)} className="close-view-all-tasks-model">close</button>
-                                </div>
-                            <div className="promp-user-bottom">
-                                <h3>Are you sure you want to remove this task? </h3>
-                                <button type="button" onClick={deleteTask}>Yes</button>
-                                <button type="button" onClick={()=> setPrompTheUserModel(false)}>No</button>
+                      <h6 className="heading-for-viewtasks">So far you've sheduled {tasks.length} {`${tasks.length == 1 ? 'task' : 'tasks'}`}</h6>
 
-                            </div>
 
-                                
-                            </div>
-                        </div>
-                    </div>
-            )}
+                      {promptTheUserModel && (
+                          <div className="modelContainer">
+                              <div className="overlay">
+                                  <div className="viewTasksmodelContent">
+                                      <div className="view-task-model-header">
+                                          <h2 style={{color:"#fff"}}>All tasks</h2>
+                                          <button type='button' onClick={()=>setPromptTheUserModel(!promptTheUserModel)} className="close-view-all-tasks-model">close</button>
+                                      </div>
+                                  <div className="alltaskscontainer">
+                                      <AllTasks />
+                                  </div>
+
+                                      
+                                  </div>
+                              </div>
+                          </div>
+                        )
+                      }
                   </div>
-    )
-}
 
-export default TasksContainer
+    )}
+
+export default AllTasks
