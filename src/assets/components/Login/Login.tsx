@@ -1,7 +1,7 @@
 import "./login.css"
 import {Link} from "react-router-dom"
 import Logo from "/Logo.png"
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import { ChangeEvent } from "react"
 import { useState } from "react"
 import { toast } from "react-toastify"
@@ -75,7 +75,19 @@ const Login = ()=>{
                 }
                 )
                 .catch((err)=>{
-                    toast.error('You are not authorised, invalid password', {
+                   AxiosError.ERR_NOT_SUPPORT ? 
+                    toast.error("You entered a wrong password, create account instead", {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: false,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "colored",
+                        })
+                    :
+                    toast.error("Internal error server", {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
