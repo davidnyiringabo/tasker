@@ -5,12 +5,12 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles({
-  calendar: {
-    width: '100%',
-    height:'100%',
-  },
-});
+// const useStyles = makeStyles({
+//   calendar: {
+//     width: '100%',
+//     height:'100%',
+//   },
+// });
 
 interface Props{
   tasks: Task[]
@@ -26,7 +26,7 @@ interface Task {
 }
 
 const CalendarPage = ({tasks}:Props)=>{
-    const classes = useStyles()
+    // const classes = useStyles()
     return(
         <div className="overviewContainer">
 
@@ -37,7 +37,7 @@ const CalendarPage = ({tasks}:Props)=>{
                      
                     <div className="calenderPlaceholder">
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DateCalendar classes={{root:classes.calendar}}/>
+                            <DateCalendar />
                         </LocalizationProvider>
                     </div>
                    <TasksComponents tasks={tasks}/>
