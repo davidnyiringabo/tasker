@@ -5,9 +5,9 @@ import logoutImg from "/logoutimg.png"
 import aboutImg from "/Aboutimg.png"
 import datapolicy from "/datapolicy.png"
 import "./settings.css"
+import {toast} from "react-toastify"
 import { style } from "@mui/system"
 const SetingsPage = ()=>{
-
     const [darkmode, setDarkMode] = useState(false)
 
     const toggleDarkMode = ()=>{
@@ -30,6 +30,18 @@ const SetingsPage = ()=>{
     const setLightMode = ()=>{
         document.querySelector("body")?.setAttribute("class","light")
     }
+
+    const handleLogout = ()=>{
+        toast.success("successfully logged out", {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        })    }
     return(
         <div className="settingsContainer">
             <div className="settings-header">
@@ -85,7 +97,7 @@ const SetingsPage = ()=>{
             </div>
                     <div className="logout" >
                             <button type="button" className="logout-button">
-                                <Link to={"/logout"} style={{width:'100%',height:'100%',padding:'1%',display:'flex',alignItems:'center',textDecoration:'none'}}>
+                                <Link to={"/"} style={{width:'100%',height:'100%',padding:'1%',display:'flex',alignItems:'center',textDecoration:'none'}} onClick={()=> handleLogout()}>
                                         <img src={logoutImg} style={{width:'20%'}}/>Logout
                                 </Link>
                             </button>
