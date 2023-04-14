@@ -100,7 +100,6 @@ const chart = ({tasks}:Props)=>{
         left: 10,
         right: 50,
         top: 8,
-        bottom: -10,
       },
     },
     scales:{
