@@ -4,38 +4,58 @@ import {Chart} from "chart.js"
 
 import 'chart.js/auto';
 
-const DoughnutChat = ()=>{
 
-    const chartRef:any = useRef();
+interface Props{
+  completed: number,
+  uncompleted: number
+}
 
+const DoughnutChat = ({completed, uncompleted}:Props)=>{
   const data = {
-    labels: ['finished','progress'],
+    labels: ['finished','progressing'],
     datasets: [
       {
         label: "",
-        data: [50, 20,30],
+        data: [completed, uncompleted],
         fill: true,
-        backgroundColor: '#215B9E',
-        borderColor: '#0075FF',
-        pointRadius: 0
+        backgroundColor: [
+          "#215B9E",
+          "#67A6EF"
+        ],
+        borderColor: 'transparent',
+        pointRadius: 0,
+        hoverOffset: 20
       }
     ],
-  };
-
+  }
   const options = {
+    plugins:{
+      legend:{
+        dispay: true,
+        position: "bottom",
+        labels: {
+          boxWidth: 10,
+          padding: 30,
+          borderRadius: 10
+        },
+      },
+    },
+  
     scales:{
-        // x:{
-        //     grid: {
-        //         display: false
-        //     }
-        // }
+    },
+    elements: {
+      arc:  {
+        borderRadius: 10,
+        borderSkipped: "bottom"
+      }
     }
   }
       
       return (
-        <>
-            <Doughnut data={data} options={options}/>
-        </>
+        <div className="doughnut-container" style={{width: '100%',height:'100%'}}>
+            <h4 style={{fontWeight:"600",padding:'2% 4% 4%',color:'#0D325E'}}>Your progress</h4>
+            {(!completed && !uncompleted)?  <h3 style={{textAlign: "center", marginTop: "15%"}}>So far no task</h3> : <Doughnut data={data} options={options}/> }
+        </div>
       )
     
 }

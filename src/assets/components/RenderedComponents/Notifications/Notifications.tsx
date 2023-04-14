@@ -1,65 +1,27 @@
 import "./notificationspage.css"
 import crossx from "/x-circle.png"
-import { useState, useEffect } from "react"
-import axios from "axios"
-import { useNavigate } from "react-router-dom"
-const NotificationsPage = ()=>{
-    const navigate = useNavigate()
-    const [tasks,setTasks] = useState([
-        {
-            description: 'Go to job interview',
-            category: 'work',
-            deadline: '15h00',
-            completed: true
-        },
-        {
-            description: 'Work on vanica project',
-            category: 'work',
-            deadline: '18h00',
-            completed: false
-        },
-        {
-            description: 'Work on vanica project',
-            category: 'work',
-            deadline: '18h00',
-            completed: false
-        },
-        {
-            description: 'Work on vanica project',
-            category: 'work',
-            deadline: '18h00',
-            completed: false
-        },
-        {
-            description: 'Work on vanica project',
-            category: 'work',
-            deadline: '18h00',
-            completed: false
-        },
-        {
-            description: 'Work on vanica project',
-            category: 'work',
-            deadline: '18h00',
-            completed: false
-        },
-        {
-            description: 'Work on vanica project',
-            category: 'work',
-            deadline: '18h00',
-            completed: false
-        },
-        {
-            description: 'Work on vanica project',
-            category: 'work',
-            deadline: '18h00',
-            completed: false
-        }
-    ])
+import {useEffect, useState} from "react"
+
+interface Props{
+    tasks: Task[]
+  } 
+  interface Task {
+    _id: String;
+    description: string;
+    completed: boolean;
+    deadline_day: string;
+    deadline_time: string;
+    category: string;
+    timestamp: number
+  }
+
+const NotificationsPage = ({tasks}:Props)=>{
+    const [userTasks,setUserTasks] = useState(tasks)
 
     const [read, setRead] = useState(false)
 
-    const dateOb = new Date();
-    const todayDateNumber = dateOb.getDay()
+    const dateOb = new Date()
+    const todayDateNumber = dateOb.getDate()
     const weekDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
     const monthsOfYeah = ["January","February","March","April","May","June","July","August","September","October","November","December"]
 
@@ -69,28 +31,20 @@ const NotificationsPage = ()=>{
     const thisMonth = monthsOfYeah[thisMonthNumber]
     const thisyeah = dateOb.getFullYear()
 
+    const dayDate = `${thisyeah}-0${thisMonthNumber+1}-${todayDateNumber}`
+    userTasks.sort((a,b)=> b.deadline_day.localeCompare(a.deadline_day))
+    console.log(userTasks)
+
     const clearNotifications = ()=>{
-        setTasks([])
+        setUserTasks([])
     }
 
-    const cookie= document.cookie.split('=')
-    const userLogginEmail = cookie[1]
-  
-      useEffect( ()=>{
-  
-        axios.get(`http://localhost:7100/v1/api/tasks/${userLogginEmail}`)
-               .then((response)=>{
-                const userTasks = response.data
-  
-                setTasks(userTasks)
-                console.log(response.data) 
-                console.log("removed")
-                // navigate('/main/overview') 
-               })
+    // useEffect(()=>{
+    //         const time = new Date()
+    //         const currentTime = time.getTime()
+    //         console.log(currentTime)
+    // },[new Date().getMilliseconds()])
 
-              
-
-      },[userLogginEmail])
     return(
         <div className="notificationsContainer">
             <div className="notificationscontainer-header">
@@ -103,20 +57,22 @@ const NotificationsPage = ()=>{
             </div>
 
             <div className="notificationsPlaceholder">
-                { (tasks.length >1)? tasks.map((task)=>{
+                { (userTasks.length > 1)? userTasks.map((task)=>{
                     return(
                         <div className={`${read? "singleNotification read" : "singleNotification"}`}>
                             <h5>{todayDate} {thisMonth} {thisyeah}</h5>
-                            <h3>Deadline for "{task.description}" is {task.deadline}</h3>
+                            <h3>{dayDate <= task.deadline_day ? `Deadline for ${task.description} is ${task.deadline_day}` :`Deadline for ${task.description} was ${task.deadline_day}`}</h3>
                         </div>
                     )
-                }):(tasks.length == 1)? (
+                }):(userTasks.length == 1)? 
                     <div className={`${read? "singleNotification read" : "singleNotification"}`}>
                         <h5>{todayDate} {thisMonth} {thisyeah}</h5>
-                        <h3>Deadline for "{tasks[0].description}" is {tasks[0].deadline}</h3>
+                        <h3>{dayDate >= tasks[0].deadline_day ? `Deadlines for ${tasks[0].description} is ${tasks[0].deadline_day} ` : `Deadline for ${tasks[0].description} was ${tasks[0].deadline_day}`}</h3>
+
                     </div>
 
-                ) : <h3 style={{marginTop:'9%'}}>There is no notification</h3>} 
+                 : <h3 style={{marginTop:'9%'}}>There is no notification</h3>
+            } 
             </div>
         </div>
     )

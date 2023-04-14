@@ -2,7 +2,7 @@ import Logo from "/Logo.png"
 import "./home.css"
 import {BrowserRouter as Router, Routes, Route,Link} from "react-router-dom"
 import Page from "./assets/components/RenderedComponents/Calendar/Calendar"
-import Check from "./assets/components/RenderedComponents/Tasks/TasksPage"
+import Check from "/check-circle.png"
 import overview from "/chart-column-solid1.png"
 import tasksImg from "/Group5.png"
 import calender from "/calendar.png"
@@ -17,18 +17,32 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { useState,useEffect, ReactNode } from "react"
-import { useNavigate } from "react-router-dom"
 import crossx from "/x-circle.png"
 import axios from "axios"
-import AllTasks from "./assets/components/AllTasks"
-
 
 interface Props{
     children: ReactNode,
+    tasks: Task[]
 }
 
-const Sidebars = ({children}: Props)=>{
-    const navigate = useNavigate()
+interface Task {
+    _id: String;
+    description: string;
+    completed: boolean;
+    deadline_day: string;
+    deadline_time: string;
+    category: string;
+    timestamp: number;
+}
+
+const Sidebars = ({children, tasks}: Props)=>{
+    const [client, setClient] = useState({
+        _id: '',
+        username: '',
+        email: '',
+        password:'',
+        about:''
+    })
     const cookie= document.cookie.split('=')
     const userLogginEmail = cookie[1]
 
@@ -51,7 +65,8 @@ const Sidebars = ({children}: Props)=>{
     const [addTaskFormData, setAddTaskFormData] = useState({
         description: '',
         category: '',
-        deadline:'',
+        deadline_day: '',
+        deadline_time: '',
         email: userLogginEmail,
         timestamp: Date.now(),
         completed: false
@@ -59,11 +74,7 @@ const Sidebars = ({children}: Props)=>{
 
     const handleAddTaskSubmit = (e:any)=>{
 
-            axios.post("http://localhost:7100/v1/api/createTask",addTaskFormData)
-                        .then((response)=>{
-                            console.log(response)
-
-                        })
+            axios.post("http://localhost:7200/v1/api/createTask",addTaskFormData)
                         .catch((err)=>{
                             console.log(err)
                         })
@@ -74,26 +85,43 @@ const Sidebars = ({children}: Props)=>{
         setAddTaskFormData((prevState) => ({
           ...prevState,
           [name]: value,
-        }));
+        }))
 
         console.log(addTaskFormData)
-      };
- 
-      const [tasks,setTasks] = useState([
-    ]);
+      }
 
     useEffect( ()=>{
 
-      axios.get(`http://localhost:7100/v1/api/tasks/${userLogginEmail}`)
-             .then((response)=>{
-              const userTasks = response.data
+     axios.get(`http://localhost:7200/v1/api/getUser/${userLogginEmail}`)
+            .then((response)=>{
+                setClient(response.data)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
 
-              setTasks(userTasks)
-              console.log(response.data)
 
-             })
+
+      
     },[userLogginEmail])
-    const firstTasks = [tasks[0],tasks[1]]
+    const dateOb = new Date()
+    const day = dateOb.getDate()
+    const month = dateOb.getMonth()
+    const year = dateOb.getFullYear()
+
+    const date = `${year}-0${month+1}-${day}`
+    const tasksForToday = tasks.filter(task=>{
+        return task.deadline_day == date
+    })
+    const first4Tasks = [tasks[0],tasks[1],tasks[2],tasks[3]];
+    const first3Tasks = [tasks[0],tasks[1],tasks[2]];
+    const first2Tasks = [tasks[0],tasks[1]];
+
+    const [search, setSearch] = useState("")
+
+    const handleSearch = (e:any)=>{
+        setSearch(e.target.value)
+    }
     return(
         <div className="container-main" >
             <div className="sidebar-left"> 
@@ -142,7 +170,7 @@ const Sidebars = ({children}: Props)=>{
                                     <div className="category">
                                         <label htmlFor="category">Choose a category</label>
                                         <select name="category" id="category" value={addTaskFormData.category} onChange={handleChange} required>
-                                            <option value="work">--select---</option>
+                                            <option value="select">--select---</option>
                                             <option value="work">Work</option>
                                             <option value="learning">Learning</option>
                                             <option value="home">Home</option>
@@ -152,7 +180,9 @@ const Sidebars = ({children}: Props)=>{
 
                                     <div className="deadline">
                                         <label htmlFor="deadline">Deadline</label>
-                                        <input type="date" name="deadline" value={addTaskFormData.deadline} onChange={handleChange} id="deadline" placeholder="choose a date" required/>
+                                        <input type="date" name="deadline_day" value={addTaskFormData.deadline_day} onChange={handleChange} id="deadline" placeholder="choose a date" required/>
+                                        <input type="time" name="deadline_time" value={addTaskFormData.deadline_time} onChange={handleChange} id="deadline" placeholder="choose a time" required/>
+
                                     </div>
 
                                     <button type="submit" className="addTaskSubmit">Finish</button>
@@ -169,8 +199,8 @@ const Sidebars = ({children}: Props)=>{
                 <div className="hero-container">
                     <div className="naigationBar">
                         <div className="searchContainer">
-                            <a href="https://www.google.com/search?q=search_something" target={"_blank"}><img src={SearchButton}/></a>
-                            <input type="search" name="search" id="dark" className="searchplacehd" placeholder="Search something" />
+                            <a href={`https://www.google.com/search?q=${search}`} target={"_blank"}><img src={SearchButton}/></a>
+                            <input type="search" name="search" id="dark" onChange={(e)=>handleSearch(e)} className="searchplacehd" placeholder="Search something" />
                         </div>
                     
                         <div className="notificationsTop" id="dark">
@@ -190,15 +220,53 @@ const Sidebars = ({children}: Props)=>{
                 <div className="right-side-container">
                     <div className="upper-card">
                         <img src={profilePic}/>
-                        <h3>Samantha Cartel</h3>
-                        <h6>Senior front-end developer at google</h6>
+                        <h3>{client.username}</h3>
+                        <h6>{`${client.about ? client.about : "No description added yet"}`}</h6>
                     </div>
                     <div className="calendar-container">
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <LocalizationProvider dateAdapter={AdapterDayjs} classname="calender-main">
                             <DateCalendar showDaysOutsideCurrentMonth fixedWeekNumber={6} />
                         </LocalizationProvider>
                     </div>
                     <div className="recent-tasks">
+                        <h4 className="recent-tasks-header">Tasks for today</h4>
+                        {tasksForToday.length >= 4? tasksForToday.map(task=>{
+                            return(
+                               <div className="single-recent-task">
+                                    <img src={Check}/>
+                                    <h5>{task.description}</h5>
+                                    <h6>at {task.deadline_time}</h6>
+
+                                </div>
+                            )
+                        }):
+                        tasksForToday.length == 3? tasksForToday.map(task=>{
+                            return(
+                                <div className="single-recent-task">
+                                    <img src={Check}/>
+                                    <h5>{task.description}</h5>
+                                    <h6>at {task.deadline_time}</h6>
+                                </div>
+                            )
+
+                        }):
+                        tasksForToday.length == 2? tasksForToday.map(task=>{
+                            return(
+                                <div className="single-recent-task">
+                                    <img src={Check}/>
+                                    <h5>{task.description}</h5>
+                                    <h6>at {task.deadline_time}</h6>
+                                </div>
+                            )
+                        }):
+                        tasksForToday.length == 1?  
+                        <div className="single-recent-task">
+                            <img src={Check}/>
+                            <h4>{tasksForToday[0].description}</h4>
+                            <h6>at {tasksForToday[0].deadline_time}</h6>
+                           </div>
+                        :<h3>There is no task for today</h3>
+                    }
                     </div>
                 </div>
 

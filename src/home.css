@@ -1,7 +1,26 @@
+.light{
+    --primary-color: #FFFFFF;
+    --bg-color: #001833;
+    --theme-color: #0075FF;
+    --dark-blue-color: #001833;
+    --hero-container:#EEF3F9;
+    --font-color: #000;
+    --single-task-color: #e5ecf5;
+}
+
+.dark{
+  --primary-color: #001833;
+  --bg-color: #112C4C;
+  --theme-color: #0F1E30;
+  --dark-blue-color: #0F1E30;
+  --hero-container:#0F1E30;
+  --font-color: #F0EAEA;
+  --single-task-color: #001F43;
+
+}
 .container-main{
     width: 100%;
-    height: 150vh;
-    
+    height: 150vh;   
     display: flex;
     position: relative;
 }
@@ -19,9 +38,9 @@
     display: flex;
     align-items: center;
     justify-content: left;
-    color: #fff;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 20px;
+    color: #fff;
+    font-family: Smooch;
 
 }
 .sidebar-header Link h4{
@@ -40,6 +59,9 @@
     align-items: center;
     gap: 2%;
     font-size: 18px;
+    color: #fff;
+
+
 }
 
 
@@ -64,10 +86,10 @@
     gap: 2%;
     background: transparent;
     border-radius: 10px;
-    color: #fff;
     border: none;
     font-weight: 800;
     text-decoration: none;
+    color: #fff;
 }
 .side-middle{
     width: 70%;
@@ -92,11 +114,12 @@
     border-radius: 10px;
     display: flex;
     align-items: center;
-    color: #fff;
+    
     margin-bottom: 10%;
     background-color: #0075FF;
     font-weight: 800;
     border: none;
+    color: #fff;
 }
 .side-button-middle img{
     width: 14%;
@@ -110,11 +133,12 @@
     text-align: left;
     background-color: transparent;
     border: none;
-    color: #fff;
     display: flex;
     align-items: center;
     gap: 3%;
     font-weight: 800;
+    color: #fff;
+
 }
 .side-button-bottom img{
     width: 10%;
@@ -131,7 +155,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background: #EEF3F9;
+    background: var(--hero-container);
     border-radius: 20px;
     margin-top: 1%;
 }
@@ -146,7 +170,7 @@
     height: 97%;
     /* border: 1px solid orange; */
     border-radius: 10px;
-    background: #fff;
+    background: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -173,16 +197,41 @@
     font-size: 23px;
 }
 .calendar-container{
-    width: 100% !important;
+    width: 90% !important;
     height: 40%;
     margin-top: 25%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
 }
 
+.calender-main{
+    width: 30% !important;
+}
 .recent-tasks{
     width: 100%;
     height: 30%;
-    /* border: 1px solid orange; */
-    /* margin-top: 10%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 2%;
+}
+.recent-tasks-header{
+    margin-bottom: 3%;
+    font-size: 19px;
+    font-family: Poppins;
+    color: #0F1E30;
+}
+.single-recent-task{
+    width: 90%;
+    height: 17%;
+    display: flex;
+    align-items: center;
+    gap: 10%;
+    padding: 0% 2%;
+    border: 1px solid #C6C6C6;
+    border-radius: 10px;
 }
 .link{
     width: 100%;
@@ -205,14 +254,16 @@
     display: flex;
     align-items: center;
     position: relative;
+    /* background: var(--primary-color); */
+
 }
 .searchplacehd{
     width: 100%;
     height: 80%;
-    background: #fff;
+    background: var(--primary-color);
     padding-left: 5%;
     color: black;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
 }
 .searchplacehd::placeholder{
     color: rgb(80, 77, 77);
@@ -236,7 +287,7 @@
     height: 50%;
     display: flex;
     align-items: center;
-    background: #fff;
+    background: var(--primary-color);
     justify-content: center;
     border-radius: 10px;
 }
@@ -265,16 +316,16 @@ body.active-model {
 
 .addTaskmodelContent{
     width: 40%;
-    height: 60%;
+    height: 70%;
     gap: 2%;
     position: absolute;
-    background: #ffffff;
+    background: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     font-weight:normal;
     z-index: 99;
 }
@@ -284,7 +335,7 @@ body.active-model {
     height: 93%;
     gap: 2%;
     position: absolute;
-    background: #0075FF;
+    background: var(--theme-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -297,7 +348,8 @@ body.active-model {
 }
 .alltaskscontainer{
     width: 80%;
-    height: 100%;
+    height: 90%;
+    background: var(--primary-color);
 }
 .add-task-model-header{
     width: 90%;
@@ -318,7 +370,7 @@ body.active-model {
 }
 .addTaskFormContainer{
     width: 90%;
-    height: 90%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -332,13 +384,31 @@ body.active-model {
 }
 .description{
     width: 100%;
-    height: 34%;
+    height: 30%;
     font-size: 18px;
     font-weight: 400;
-    font-family: sans-serif;
     display: flex;
     flex-direction: column;
     gap: 10%;
+}
+
+.chartContainer{
+    width: 100%;
+    /* background: var(--primary-color); */
+    background: transparent;
+}
+.left-chart{
+    width: 100%;
+    background: var(--primary-color);
+}
+.chart-container{
+    background: var(--primary-color);
+}
+.right-chart{
+    background: var(--primary-color);
+}
+.doughnut-container{
+    background: var(--primary-color);
 }
 .description input{
     width: 90%;
@@ -358,18 +428,18 @@ body.active-model {
     display: flex;
     flex-direction: column;
     margin-top: 2%;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     gap: 10%;
 }
 .category select{
     width: 58%;
-    height: 44%;
+    height: 40%;
     outline: 1px solid #777777b4;
     border-radius: 5px;
 }
 .deadline{
     width: 100%;
-    height: 20%;
+    height: 30%;
     display: flex;
     flex-direction: column;
     gap: 10%;
@@ -383,16 +453,20 @@ body.active-model {
 }
 .addTaskSubmit{
     width: 27%;
-    height: 12%;
+    height: 10%;
     background: #0075FF;
     border: none;
     border-radius: 8px;
-    color: #fff;
+    
     font-weight: 700;
     font-size: 17px;
     margin-top: 1%;
 }
 
-.darkMode{
-    background: #0F1E30;
+
+
+@media (max-width: 900px){
+    .hero-container{
+        width: 90%;
+    }
 }

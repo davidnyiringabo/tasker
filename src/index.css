@@ -1,13 +1,33 @@
+.light{
+  --primary-color: #FFFFFF;
+  --bg-color: #001833;
+  --theme-color: #0075FF;
+  --dark-blue-color: #001833;
+  --hero-container:#EEF3F9;
+  --font-color: #000;
+  --single-task-color: #e5ecf5;
+}
+
+.dark{
+--primary-color: #001833;
+--bg-color: #112C4C;
+--theme-color: #0F1E30;
+--dark-blue-color: #0F1E30;
+--hero-container:#0F1E30;
+--font-color: #F0EAEA;
+--single-task-color: #001F43;
+
+}
 #root {
   width: 98.7vw;
   min-height: 100vh;
-  background: #001833;
+  background: var(--bg-color);
+  color: var(--font-color);
 }
 *{
   margin: 0;
   padding: 0;
+  font-family: Poppins;
 }
 
-.darkMode:root{
-  background: red;
-}
+

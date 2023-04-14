@@ -3,8 +3,6 @@ import "./calender.css"
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
-// import { makeStyles } from '@material-ui/core/styles';
-
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
@@ -14,9 +12,20 @@ const useStyles = makeStyles({
   },
 });
 
+interface Props{
+  tasks: Task[]
+}
+interface Task {
+  _id: string;
+  description: string;
+  completed: boolean;
+  deadline_day: string;
+  deadline_time: string;
+  category: string;
+  timestamp: number
+}
 
-
-const CalendarPage = ()=>{
+const CalendarPage = ({tasks}:Props)=>{
     const classes = useStyles()
     return(
         <div className="overviewContainer">
@@ -31,7 +40,7 @@ const CalendarPage = ()=>{
                             <DateCalendar classes={{root:classes.calendar}}/>
                         </LocalizationProvider>
                     </div>
-                   <TasksComponents/>
+                   <TasksComponents tasks={tasks}/>
                 </div>
 
         </div>

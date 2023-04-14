@@ -1,7 +1,7 @@
 .settingsContainer{
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: var(--primary-color);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -20,6 +20,7 @@
 .settingsContentContainer{
     width: 90%;
     height: 80%;
+    position: relative;
 }
 .color-theme{
     width: 100%;
@@ -99,4 +100,8 @@ select:focus{
 }
 .logout-button:hover{
     background: #BA4A4A;
+}
+.logout{
+    position: absolute;
+    bottom: 0;
 }

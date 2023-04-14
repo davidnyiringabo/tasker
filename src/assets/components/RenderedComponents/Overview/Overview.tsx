@@ -5,10 +5,30 @@ import TasksComponents from "../../TasksComponets"
 import Chartco from '../../Charts/Line';
 import DoughnutChat from '../../Charts/Doughnut';
 import AllTasks from '../../AllTasks';
-
 import "./overview.css"
+interface Props{
+  tasks: Task[]
+}
 
-const Calendar = ()=>{
+interface Task {
+  _id: string;
+  description: string;
+  completed: boolean;
+  deadline_day: string;
+  deadline_time: string;
+  category: string;
+  timestamp: number
+}
+
+const Calendar = ({tasks}:Props)=>{
+        const completedTasks=  tasks.filter(task=>{
+          return task.completed
+        })
+
+        const unCompletedTasks = tasks.filter(task=>{
+          return !task.completed
+        })
+
         const [viewAllTasksModal,setViewAllTasksModal] = useState(false)  
         const dateOb = new Date();
         const todayDateNumber = dateOb.getDay()
@@ -32,17 +52,15 @@ const Calendar = ()=>{
             },
           ],
         };
-  
-        const [tasks,setTasks]  = useState({})
+
         return(
             <div className="overviewContainer">
                 <div className="chartContainer">
-                  <div className='left-chart' >
-                    <h4>Your statistics</h4>
-                    <Chartco/>
+                  <div className='left-chart'>
+                    <Chartco tasks={tasks}/>
                   </div>
                   <div className='right-chart'>
-                    <DoughnutChat/>
+                    <DoughnutChat completed={completedTasks.length} uncompleted={unCompletedTasks.length}/>
                   </div>
                 </div>
 
@@ -56,7 +74,7 @@ const Calendar = ()=>{
                     <button type='button' onClick={()=>setViewAllTasksModal(true)} style={{cursor:'pointer'}}> View all tasks</button>                      
                   </div>
 
-                   <TasksComponents />
+                   <TasksComponents tasks={tasks}/>
                 </div>
 
                 {viewAllTasksModal && (
@@ -67,9 +85,9 @@ const Calendar = ()=>{
                                 <h2 style={{color:"#fff"}}>All tasks</h2>
                                 <button type='button' onClick={()=>setViewAllTasksModal(!viewAllTasksModal)} className="close-view-all-tasks-model">close</button>
                             </div>
-                        <div className="alltaskscontainer">
-                            <AllTasks />
-                        </div>
+                            <div className="alltaskscontainer">
+                                <AllTasks tasks={tasks}/>
+                            </div>
 
                             
                         </div>

@@ -5,9 +5,21 @@ import AllTasks from "../../AllTasks";
 
 interface Props{
   setViewAllTasksModal: Function,
-  viewAllTasksModal: boolean
+  viewAllTasksModal: boolean,
+  tasks: Task[]
 }
-const TasksPage:React.FC<Props> = ({setViewAllTasksModal,viewAllTasksModal})=>{
+
+interface Task {
+  _id: string;
+  description: string;
+  completed: boolean;
+  deadline_day: string;
+  deadline_time: string;
+  category: string;
+  timestamp: number;
+}
+
+const TasksPage = ({setViewAllTasksModal,viewAllTasksModal, tasks}:Props)=>{
 
         const dateOb = new Date();
         const todayDateNumber = dateOb.getDay()
@@ -32,7 +44,7 @@ const TasksPage:React.FC<Props> = ({setViewAllTasksModal,viewAllTasksModal})=>{
                     <button type='button' onClick={()=>setViewAllTasksModal(true)}> View all tasks</button>                      
                   </div>
 
-                   <TasksComponents/>
+                   <TasksComponents tasks={tasks}/>
                 </div>
 
             </div>
@@ -42,7 +54,7 @@ const TasksPage:React.FC<Props> = ({setViewAllTasksModal,viewAllTasksModal})=>{
                       <h3>All tasks</h3>
                     </div>                     
 
-                   <TasksComponents/>
+                   <TasksComponents tasks={tasks}/>
                 </div>
 
                 {viewAllTasksModal && (
@@ -54,7 +66,7 @@ const TasksPage:React.FC<Props> = ({setViewAllTasksModal,viewAllTasksModal})=>{
                                     <button type='button' onClick={()=>setViewAllTasksModal(!viewAllTasksModal)} className="close-view-all-tasks-model">close</button>
                                 </div>
                             <div className="alltaskscontainer">
-                                <AllTasks />
+                                <AllTasks tasks={tasks}/>
                             </div>
 
                                 

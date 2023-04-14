@@ -3,11 +3,12 @@ import {Link} from "react-router-dom"
 import Logo from "/Logo.png"
 import axios, { AxiosError } from "axios"
 import { ChangeEvent } from "react"
-import { useState } from "react"
+import { useState, CSSProperties } from "react"
 import { toast } from "react-toastify"
 import {useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import GridLoader from "react-spinners/GridLoader";
 const formemail = "nyiringabodavid@gmail.com"
 
 const Login = ()=>{
@@ -19,7 +20,7 @@ const Login = ()=>{
         email:'',
         password:''
       })
-
+    const [loading, setLoading] = useState(false)
     const handleChange = (e:any) => {
         const { name, value } = e.target;
         setFormData((prevState) => ({
@@ -29,12 +30,13 @@ const Login = ()=>{
         const email = formData.email
         setFormEmail(email)
       };
-    //   console.log(formData)
 
     const handleSubmit = (e:any)=>{
+        setLoading(!loading)
         e.preventDefault();
-        axios.post('http://localhost:7100/v1/api/login',formData)
+        axios.post('https://tasker-jbnc.onrender.com/v1/api/login',formData)
                 .then((response)=>{
+                    setLoading(false)
                     if(response.status == 200){
                         toast.success(response.data, {
                           position: "top-right",
@@ -48,7 +50,7 @@ const Login = ()=>{
                           });      
               
                         setTimeout(()=>{
-                          navigate("/main")
+                          navigate("/main/overview")
                         },1000)
 
                    
@@ -101,6 +103,11 @@ const Login = ()=>{
                 })
     }
 
+    const override: CSSProperties = {
+        display: "inline",
+        margin: "0 auto",
+        borderColor: "red",
+      }
 
     return(
 
@@ -129,7 +136,7 @@ const Login = ()=>{
                         <Link to="forgotPassword" className="forgotPasswordLink"><button type="button" className="forgotPasswordButton">forgot password</button></Link>
                     </div>
 
-                    <button type="submit" className="submit">Login</button>
+                    <button type="submit" className="submit">{ !loading? "Login" : <GridLoader color={"#fff"} loading={loading} size={9} />}</button>
 
                     <div className="footer">
                         <h5>Not yet joined ? </h5>

@@ -1,7 +1,7 @@
 .overviewTasksContainer{
     width: 100%;
     height: 58%;
-    background: #fff;
+    background: var(--primary-color);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -11,13 +11,13 @@
 .viewAllTasksContainer{
     width: 100%;
     height: 90%;
-    background: #fff;
-    overflow: auto;
+    background: var(--primary-color);
+    /* background: #fff; */
+    overflow-y: scroll;
     border-radius: 10px;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    justify-content: start;
 }
 .heading-for-viewtasks{
     font-size: 13px;
@@ -68,7 +68,7 @@
     flex-direction: column;
     gap: 8%;
     padding: 3% 1%;
-    background: #e1e9f1;
+    background: var(--single-task-color);
     border-radius: 10px;
 }
 .singleAlltask{
@@ -134,4 +134,10 @@
     font-weight: 700;
     border-radius: 10px;
     padding: 2% 0;
+}
+.no-task{
+    height: 5rem;
+    text-align: center;
+    
+    /* background: #000; */
 }

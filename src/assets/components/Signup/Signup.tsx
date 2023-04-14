@@ -1,37 +1,40 @@
 import "../Login/login.css"
 import {Link} from "react-router-dom"
 import Logo from "/Logo.png"
-import { useState } from "react"
+import { useState ,CSSProperties } from "react"
 import { toast } from "react-toastify"
 import {useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import GridLoader from "react-spinners/GridLoader";
 import axios from "axios"
 
 const Signup = ()=>{
 
     const navigate = useNavigate()
+    const [formEmail,setFormEmail] = useState("");
     const [formData,setFormData] = useState({
         username:'',
         email:'',
         password:''
       })
-
-    const handleChange = (e) => {
+      let [loading, setLoading] = useState(false)
+    const handleChange = (e:any) => {
         const { name, value } = e.target;
         setFormData((prevState) => ({
           ...prevState,
           [name]: value,
         }));
+        const email = formData.email
+        setFormEmail(email)
       };
-      console.log(formData)
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = (e:any)=>{
+      setLoading(!loading)
         e.preventDefault();
-        axios.post('http://localhost:7100/v1/api/signup',formData)
+        axios.post('https://tasker-jbnc.onrender.com/v1/api/signup',formData)
                 .then((response)=>{
-                    console.log("submitted", response)
-
+                  setLoading(false)
                     if(response.status === 200){
                         toast.success("User created successfully", {
                           position: "top-right",
@@ -45,7 +48,7 @@ const Signup = ()=>{
                           });
               
                         setTimeout(()=>{
-                          navigate("/main")
+                          navigate("/main/overview")
                         },1000)
                     }
                     else if(response.data.code === 11000){
@@ -60,9 +63,12 @@ const Signup = ()=>{
                       theme: "colored",
                       });
                   }
+
+                  document.cookie = `email=${formEmail}`
                  })
                     
                 .catch((err)=>{
+                    console.log(err)
                     if(err.response.data.code === 11000){
                         toast.error('That account already exists.Log in or create new.', {
                           position: "top-right",
@@ -86,9 +92,17 @@ const Signup = ()=>{
                             progress: undefined,
                             theme: "colored",
                             })
+
+
                       }
                     
                 })
+    }
+
+    const override: CSSProperties = {
+      display: "inline",
+      margin: "auto",
+      borderColor: "red",
     }
 
     return(
@@ -118,7 +132,7 @@ const Signup = ()=>{
                         <input type="password"  value={formData.password} onChange={handleChange} name="password" id="password" placeholder="Your password" required/>
                     </div>
 
-                    <button type="submit" className="submit">Create account</button>
+                    <button type="submit" className="submit"> { !loading? "Create account" :  <GridLoader color={ "#fff"} cssOverride={override} loading={loading} size={5} /> }   </button>
 
                     <div className="footer">
                         <h5>Have account ? </h5>
