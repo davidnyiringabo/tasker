@@ -77,7 +77,6 @@ const chart = ({tasks}:Props)=>{
     plugins:{
       legend:{
         dispay: false,
-        // position: "bottom",
         labels: {
           display: false,
           boxWidth: 10,
