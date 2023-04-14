@@ -67,7 +67,7 @@ const Calendar = ({tasks}:Props)=>{
                 <div className="overviewTasksContainer">
                   <div className='tasks-upper-header'>
                     <div className='tasks-upper-header-left'>
-                      <h3>Tasks for today</h3>
+                      <h3>recent tasks</h3>
                         <h5>{today}, {todayDate} {thisMonth} {thisyeah}</h5>
                     </div>
 
