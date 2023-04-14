@@ -2,6 +2,7 @@ import "./feedback.css"
 import { useState } from "react";
 import axios from "axios";
 import {toast} from "react-toastify"
+const baseurl = "http://localhost:7200"
 const FeedbackPage = ()=>{
 
 
@@ -20,7 +21,7 @@ const FeedbackPage = ()=>{
 
       const handleSubmit = (e:any)=>{
         e.preventDefault();
-        axios.post('http://localhost:7200/v1/api/notification',formData)
+        axios.post(`${baseurl}/v1/api/feedback`,formData)
                 .then((response)=>{
                     if(response.status === 200){
                         toast.success("feedback sent! Thanks", {

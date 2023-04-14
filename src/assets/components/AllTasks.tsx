@@ -10,6 +10,7 @@ import {toast} from "react-toastify"
 import { useNavigate } from "react-router-dom"
 import Homedot from "/homedot.png"
 import learningdot from "/learningdot.png"
+const baseurl = "http://localhost:7200"
 
 
 interface Task {
@@ -31,7 +32,7 @@ const AllTasks = ({tasks}:Props)=>{
 
     const handlecompletedTasks=(task:any)=>{
     !task.completed ?  
-      axios.put(`https://tasker-jbnc.onrender.com/v1/api/updateAscompleted/${task._id}`)
+      axios.put(`${baseurl}/v1/api/updateAscompleted/${task._id}`)
             .then(response=>{
               console.log(response)
               toast.success(response.data,{
@@ -57,7 +58,7 @@ const AllTasks = ({tasks}:Props)=>{
   }
 
   const handledeleteTask = (id:any)=>{
-    axios.get(`https://tasker-jbnc.onrender.com/v1/api/deleteTask/${id}`)
+    axios.get(`${baseurl}/v1/api/deleteTask/${id}`)
         .then((response)=>{
         console.log(response.data)
         })

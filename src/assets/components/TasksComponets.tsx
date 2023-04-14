@@ -10,6 +10,7 @@ import AllTasks from "./AllTasks"
 import { useNavigate } from "react-router-dom"
 import {toast} from "react-toastify"
 import { ToastContainer } from "react-toastify"
+const baseurl = "http://localhost:7200"
 
 interface Props{
   tasks: Task[]
@@ -28,7 +29,7 @@ interface Task {
 const TasksContainer = ({tasks}:Props)=>{
 
     const handledeleteTask = (id:any)=>{
-      axios.get(`https://tasker-jbnc.onrender.com/v1/api/deleteTask/${id}`)
+      axios.get(`${baseurl}/v1/api/deleteTask/${id}`)
           .then((response)=>{
           console.log(response.data)
           })
@@ -45,7 +46,7 @@ const TasksContainer = ({tasks}:Props)=>{
           })             
     }
     const handlecompletedTasks=(id:any)=>{
-      axios.put(`https://tasker-jbnc.onrender.com/v1/api/updateAscompleted/${id}`)
+      axios.put(`${baseurl}/v1/api/updateAscompleted/${id}`)
         .then(response=>{
           console.log(response)
           toast.success(response.data,{

@@ -15,6 +15,7 @@ import TermsPage from "./assets/components/Pages/Terms/Terms"
 import DataPolicyPage from './assets/components/Pages/data_Policy/DataPolicyPage'
 import AboutPage from './assets/components/Pages/about/About'
 import FeedbackPage from './assets/components/Pages/feedback/FeedbackPage'
+const baseurl = "http://localhost:7200"
 
 interface Task {
   _id: string;
@@ -31,15 +32,16 @@ function App() {
   const cookie= document.cookie.split('=')
   const userLogginEmail = cookie[1]
 
-  
+  console.log(userLogginEmail)
   const [tasks,setTasks] = useState<Task[]>([
   ]);
 
   useEffect( ()=>{
 
-    axios.get(`http://localhost:7200/v1/api/tasks/${userLogginEmail}`)
+    axios.get(`${baseurl}/v1/api/tasks/${userLogginEmail}`)
            .then((response)=>{
             const userTasks = response.data
+            console.log(response)
             setTasks(userTasks)
            })
            .catch(err=>{

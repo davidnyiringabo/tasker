@@ -15,7 +15,6 @@ const DoughnutChat = ({completed, uncompleted}:Props)=>{
     labels: ['finished','progressing'],
     datasets: [
       {
-        label: "",
         data: [completed, uncompleted],
         fill: true,
         backgroundColor: [
@@ -31,18 +30,17 @@ const DoughnutChat = ({completed, uncompleted}:Props)=>{
   const options = {
     plugins:{
       legend:{
-        dispay: true,
-        position: "bottom",
+        display: true,
+        // position: "bottom",
         labels: {
           boxWidth: 10,
-          padding: 30,
+          padding: 10,
           borderRadius: 10
         },
       },
     },
   
-    scales:{
-    },
+    scales:{},
     elements: {
       arc:  {
         borderRadius: 10,
@@ -53,7 +51,7 @@ const DoughnutChat = ({completed, uncompleted}:Props)=>{
       
       return (
         <div className="doughnut-container" style={{width: '100%',height:'100%'}}>
-            <h4 style={{fontWeight:"600",padding:'2% 4% 4%',color:'#0D325E'}}>Your progress</h4>
+            <h4 style={{fontWeight:"600",padding:'0 4%',color:'#0D325E'}}>Your progress</h4>
             {(!completed && !uncompleted)?  <h3 style={{textAlign: "center", marginTop: "15%"}}>So far no task</h3> : <Doughnut data={data} options={options}/> }
         </div>
       )

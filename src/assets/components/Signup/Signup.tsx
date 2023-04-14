@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import GridLoader from "react-spinners/GridLoader";
 import axios from "axios"
+const baseurl = "http://localhost:7200"
 
 const Signup = ()=>{
 
@@ -32,7 +33,7 @@ const Signup = ()=>{
     const handleSubmit = (e:any)=>{
       setLoading(!loading)
         e.preventDefault();
-        axios.post('https://tasker-jbnc.onrender.com/v1/api/signup',formData)
+        axios.post(`${baseurl}/v1/api/signup`,formData)
                 .then((response)=>{
                   setLoading(false)
                     if(response.status === 200){

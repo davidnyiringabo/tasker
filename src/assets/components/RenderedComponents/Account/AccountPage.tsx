@@ -3,6 +3,7 @@ import "./accountpage.css"
 import userProfile from "/profileavatar.png"
 import axios from "axios"
 import { toast, ToastContainer } from "react-toastify"
+const baseurl = "http://localhost:7200"
 
 const AccountPage = ()=>{
 
@@ -25,7 +26,7 @@ const AccountPage = ()=>{
     const handleSubmit = (e:any)=>{
             e.preventDefault()
             console.log("submitted")
-            axios.put(`http://localhost:7200/v1/api/updateUser/${userEmail}`,formData)
+            axios.put(`${baseurl}/v1/api/updateUser/${userEmail}`,formData)
                 .then(()=>{
                  toast.success("updated successfully",{
                       position: "top-right",

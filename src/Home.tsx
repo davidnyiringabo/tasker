@@ -19,6 +19,7 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { useState,useEffect, ReactNode } from "react"
 import crossx from "/x-circle.png"
 import axios from "axios"
+const baseurl = "http://localhost:7200"
 
 interface Props{
     children: ReactNode,
@@ -74,7 +75,7 @@ const Sidebars = ({children, tasks}: Props)=>{
 
     const handleAddTaskSubmit = (e:any)=>{
 
-            axios.post("http://localhost:7200/v1/api/createTask",addTaskFormData)
+            axios.post(`${baseurl}/v1/api/createTask`,addTaskFormData)
                         .catch((err)=>{
                             console.log(err)
                         })
@@ -92,8 +93,9 @@ const Sidebars = ({children, tasks}: Props)=>{
 
     useEffect( ()=>{
 
-     axios.get(`http://localhost:7200/v1/api/getUser/${userLogginEmail}`)
+     axios.get(`${baseurl}/v1/api/getUser/${userLogginEmail}`)
             .then((response)=>{
+                console.log(response)
                 setClient(response.data)
             })
             .catch(err=>{

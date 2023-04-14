@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import GridLoader from "react-spinners/GridLoader";
 const formemail = "nyiringabodavid@gmail.com"
+const baseurl = "https://tasker-jbnc.onrender.com"
 
 const Login = ()=>{
 
@@ -34,7 +35,7 @@ const Login = ()=>{
     const handleSubmit = (e:any)=>{
         setLoading(!loading)
         e.preventDefault();
-        axios.post('https://tasker-jbnc.onrender.com/v1/api/login',formData)
+        axios.post(`${baseurl}/v1/api/login`,formData)
                 .then((response)=>{
                     setLoading(false)
                     if(response.status == 200){
@@ -67,15 +68,14 @@ const Login = ()=>{
                           theme: "colored",
                           });
                       }
-                })
-                .then((response)=>{
-                    console.log(response)
-                    setFormEmail(formData.email)
-                    console.log(formEmail)
 
-                    document.cookie = `email=${formEmail}`
-                }
-                )
+                      console.log(response)
+                      setFormEmail(formData.email)
+                      console.log(formEmail)
+  
+                      document.cookie = `email=${formEmail}`
+                      console.log(document.cookie)
+                })
                 .catch((err)=>{
                    AxiosError.ERR_NOT_SUPPORT ? 
                     toast.error("You entered a wrong password, create account instead", {
