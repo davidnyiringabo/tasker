@@ -23,7 +23,8 @@
     gap: 10%;
 }
 .noticationscontainer-right button{
-    width: 90%;
+    width: 100%;
+    max-height: 40%;
     padding: 1%;
     border: 1px solid #2395ed;
     background: transparent;

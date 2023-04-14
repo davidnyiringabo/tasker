@@ -23,6 +23,7 @@
   min-height: 100vh;
   background: var(--bg-color);
   color: var(--font-color);
+  font-size: 15px;
 }
 *{
   margin: 0;

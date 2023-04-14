@@ -80,8 +80,9 @@ const chart = ({tasks}:Props)=>{
         labels: {
           display: false,
           boxWidth: 10,
-          padding: 10,
-          borderRadius: 10
+          padding: 0,
+          borderRadius: 10,
+          fontSize: 3
         },
       },
     },
@@ -100,7 +101,6 @@ const chart = ({tasks}:Props)=>{
         left: 10,
         right: 50,
         top: 8,
-        bottom: -10,
       },
     },
     scales:{
@@ -123,7 +123,7 @@ const chart = ({tasks}:Props)=>{
       
       return (
         <div className="chart-container" style={{width: '100%',height:'100%'}}>
-            <h3 style={{fontWeight:"600",padding:'2% 4% 4%',color:'#0D325E'}}>Your statistics</h3>
+            <h3 style={{fontWeight:"600",padding:'2% 4% 0%',color:'#0D325E'}}>Your statistics</h3>
             <Line ref={chartRef} data={userData} options={options}/>
         </div>
       )

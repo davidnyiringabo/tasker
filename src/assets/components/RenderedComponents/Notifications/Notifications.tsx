@@ -44,7 +44,7 @@ const NotificationsPage = ({tasks}:Props)=>{
     //         const currentTime = time.getTime()
     //         console.log(currentTime)
     // },[new Date().getMilliseconds()])
-
+    console.log(dayDate > tasks[0].deadline_day)
     return(
         <div className="notificationsContainer">
             <div className="notificationscontainer-header">
@@ -61,13 +61,13 @@ const NotificationsPage = ({tasks}:Props)=>{
                     return(
                         <div className={`${read? "singleNotification read" : "singleNotification"}`}>
                             <h5>{todayDate} {thisMonth} {thisyeah}</h5>
-                            <h3>{dayDate <= task.deadline_day ? `Deadline for ${task.description} is ${task.deadline_day}` :`Deadline for ${task.description} was ${task.deadline_day}`}</h3>
+                            <h3>{dayDate < task.deadline_day ? `Deadline for ${task.description} is ${task.deadline_day} at ${task.deadline_time}` : dayDate === task.deadline_day? `Deadline for ${task.description} is today at ${task.deadline_time}` : `Deadline for ${task.description} was ${task.deadline_day} at ${task.deadline_time}`}</h3>
                         </div>
                     )
                 }):(userTasks.length == 1)? 
                     <div className={`${read? "singleNotification read" : "singleNotification"}`}>
                         <h5>{todayDate} {thisMonth} {thisyeah}</h5>
-                        <h3>{dayDate >= tasks[0].deadline_day ? `Deadlines for ${tasks[0].description} is ${tasks[0].deadline_day} ` : `Deadline for ${tasks[0].description} was ${tasks[0].deadline_day}`}</h3>
+                        <h3>{dayDate < tasks[0].deadline_day ? `Deadline for ${tasks[0].description} is ${tasks[0].deadline_day} at ${tasks[0].deadline_time}` : dayDate === tasks[0].deadline_day? `Deadline for ${tasks[0].description} is today at ${tasks[0].deadline_time}` : `Deadline for ${tasks[0].description} was ${tasks[0].deadline_day} at ${tasks[0].deadline_time}`}</h3>
 
                     </div>
 
