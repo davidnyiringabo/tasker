@@ -15,7 +15,7 @@ import TermsPage from "./assets/components/Pages/Terms/Terms"
 import DataPolicyPage from './assets/components/Pages/data_Policy/DataPolicyPage'
 import AboutPage from './assets/components/Pages/about/About'
 import FeedbackPage from './assets/components/Pages/feedback/FeedbackPage'
-const baseurl = "http://localhost:7200"
+const baseurl = "https://tasker-jbnc.onrender.com"
 
 interface Task {
   _id: string;

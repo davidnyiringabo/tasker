@@ -77,6 +77,7 @@ const Login = ()=>{
                       console.log(document.cookie)
                 })
                 .catch((err)=>{
+                  setLoading(false)
                    AxiosError.ERR_NOT_SUPPORT ? 
                     toast.error("You entered a wrong password, create account instead", {
                         position: "top-right",
@@ -102,12 +103,6 @@ const Login = ()=>{
                         console.log(err)
                 })
     }
-
-    const override: CSSProperties = {
-        display: "inline",
-        margin: "0 auto",
-        borderColor: "red",
-      }
 
     return(
 

@@ -129,7 +129,8 @@
 
 .side-button-bottom{
     width: 90%;
-    height: 30%;
+    height: 100%;
+    padding: 4% 0;
     text-align: left;
     background-color: transparent;
     border: none;
@@ -234,8 +235,20 @@
     border-radius: 10px;
 }
 .link{
-    width: 100%;
-    display: none;
+    width: 75% !important;
+    height: 20%;
+    border-radius: 10px;
+    display:flex;
+    justify-content:center;
+    text-decoration:none;
+}
+.link-bottom{
+    width: 75% !important;
+    height: 30%;
+    border-radius: 10px;
+    display:flex;
+    justify-content:center;
+    text-decoration:none;
 }
 
 .naigationBar{

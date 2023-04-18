@@ -2,7 +2,7 @@ import "./feedback.css"
 import { useState } from "react";
 import axios from "axios";
 import {toast} from "react-toastify"
-const baseurl = "http://localhost:7200"
+const baseurl = "https://tasker-jbnc.onrender.com"
 const FeedbackPage = ()=>{
 
 

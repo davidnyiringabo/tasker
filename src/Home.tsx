@@ -1,6 +1,6 @@
 import Logo from "/Logo.png"
 import "./home.css"
-import {BrowserRouter as Router, Routes, Route,Link} from "react-router-dom"
+import {BrowserRouter as Router, Routes, Route,Link,NavLink} from "react-router-dom"
 import Page from "./assets/components/RenderedComponents/Calendar/Calendar"
 import Check from "/check-circle.png"
 import overview from "/chart-column-solid1.png"
@@ -19,7 +19,8 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { useState,useEffect, ReactNode } from "react"
 import crossx from "/x-circle.png"
 import axios from "axios"
-const baseurl = "http://localhost:7200"
+import {toast} from "react-toastify"
+const baseurl = "https://tasker-jbnc.onrender.com"
 
 interface Props{
     children: ReactNode,
@@ -74,11 +75,40 @@ const Sidebars = ({children, tasks}: Props)=>{
     })
 
     const handleAddTaskSubmit = (e:any)=>{
+        e.preventDefault()
 
-            axios.post(`${baseurl}/v1/api/createTask`,addTaskFormData)
-                        .catch((err)=>{
-                            console.log(err)
-                        })
+        axios.post(`${baseurl}/v1/api/createTask`,addTaskFormData)
+            .then(response=>{
+                setTimeout(()=>{
+                    window.location.reload()
+                },5000)
+                response.status == 200 ? 
+                toast.success("task added", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    })
+                :
+                toast.error("There was an error in creating the task", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    })
+
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
     }
 
     const handleChange = (e:any) => {
@@ -137,9 +167,9 @@ const Sidebars = ({children, tasks}: Props)=>{
 
                 <div className="button-container">
                     <div className="side-upper">
-                    <Link to="/main/overview" className="link" style={{width:'100%',height:'20%',display:'flex',justifyContent:'center',textDecoration:'none'}}> <button type="button" className="overview active side-button"><img src={overview}/>Overview</button></Link>
-                    <Link to="/main/tasks" className="link" style={{width:'100%',height:'20%',display:'flex',justifyContent:'center',textDecoration:'none'}}><button type="button" className="tasks side-button"><img src={tasksImg}/>Tasks</button></Link>
-                    <Link to="/main/calendar" className="link" style={{width:'100%',height:'20%',display:'flex',justifyContent:'center',textDecoration:'none'}}><button type="button" className="calender side-button"><img src={calender}/>Calender</button></Link>
+                    <NavLink to="/main/overview" className="link"> <button type="button" className="overview side-button"><img src={overview}/>Overview</button></NavLink>
+                    <NavLink to="/main/tasks" className="link" style={{width:'100%',height:'20%',display:'flex',justifyContent:'center',textDecoration:'none'}}><button type="button" className="tasks side-button"><img src={tasksImg}/>Tasks</button></NavLink>
+                    <NavLink to="/main/calendar" className="link" style={{width:'100%',height:'20%',display:'flex',justifyContent:'center',textDecoration:'none'}}><button type="button" className="calender side-button"><img src={calender}/>Calender</button></NavLink>
                     </div>
 
                     <div className="side-middle">
@@ -147,8 +177,8 @@ const Sidebars = ({children, tasks}: Props)=>{
                     </div>
 
                     <div className="side-bottom">
-                    <Link to="/main/account" className="link" style={{width:'100%',height:'20%',display:'flex',justifyContent:'center',textDecoration:'none'}}><button type="button" className="account side-button-bottom"><img src={user}/>Account</button></Link>
-                    <Link to="/main/settings" className="link" style={{width:'100%',height:'20%',display:'flex',justifyContent:'center',textDecoration:'none'}}><button type="button" className="settings side-button-bottom"><img src={settings}/>Settings</button></Link>
+                    <NavLink to="/main/account" className="link-bottom"><button type="button" className="account side-button-bottom"><img src={user}/>Account</button></NavLink>
+                    <NavLink to="/main/settings" className="link-bottom"><button type="button" className="settings side-button-bottom"><img src={settings}/>Settings</button></NavLink>
                     </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@ import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import GridLoader from "react-spinners/GridLoader";
 import axios from "axios"
-const baseurl = "http://localhost:7200"
+const baseurl = "https://tasker-jbnc.onrender.com"
 
 const Signup = ()=>{
 
@@ -53,6 +53,7 @@ const Signup = ()=>{
                         },1000)
                     }
                     else if(response.data.code === 11000){
+                    setLoading(false)
                     toast.error('That account already exists.Log in or create new.', {
                       position: "top-right",
                       autoClose: 5000,
@@ -71,6 +72,7 @@ const Signup = ()=>{
                 .catch((err)=>{
                     console.log(err)
                     if(err.response.data.code === 11000){
+                  setLoading(false)
                         toast.error('That account already exists.Log in or create new.', {
                           position: "top-right",
                           autoClose: 5000,
@@ -83,6 +85,7 @@ const Signup = ()=>{
                           });
                       }
                       else{
+                  setLoading(false)
                         toast.error("Internal Server Error", {
                             position: "top-right",
                             autoClose: 5000,
@@ -93,10 +96,7 @@ const Signup = ()=>{
                             progress: undefined,
                             theme: "colored",
                             })
-
-
-                      }
-                    
+                      }                  
                 })
     }
 
