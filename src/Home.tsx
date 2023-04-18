@@ -20,6 +20,11 @@ import { useState,useEffect, ReactNode } from "react"
 import crossx from "/x-circle.png"
 import axios from "axios"
 import {toast} from "react-toastify"
+import GridLoader from "react-spinners/GridLoader";
+import { CSSProperties } from "react"
+import { HashLoader } from "react-spinners"
+import { Hidden } from "@mui/material"
+
 const baseurl = "https://tasker-jbnc.onrender.com"
 
 interface Props{
@@ -120,8 +125,11 @@ const Sidebars = ({children, tasks}: Props)=>{
 
         console.log(addTaskFormData)
       }
+    const [loading, setloading] = useState(false)
 
     useEffect( ()=>{
+
+    document.readyState == "loading" ? setloading(true) :setloading(false)
 
      axios.get(`${baseurl}/v1/api/getUser/${userLogginEmail}`)
             .then((response)=>{
@@ -131,6 +139,8 @@ const Sidebars = ({children, tasks}: Props)=>{
             .catch(err=>{
                 console.log(err)
             })
+
+            console.log(document.readyState);
 
 
 
@@ -154,7 +164,19 @@ const Sidebars = ({children, tasks}: Props)=>{
     const handleSearch = (e:any)=>{
         setSearch(e.target.value)
     }
+    const override: CSSProperties = {
+        width: "96vw",
+        height: "50vh",
+        overflow: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        borderColor: "red",
+      }
     return(
+        loading? 
+        <HashLoader color={ "#fff"} cssOverride={override} loading={loading} size={80} />
+        :
         <div className="container-main" >
             <div className="sidebar-left"> 
                 <div className="sidebar-header">
