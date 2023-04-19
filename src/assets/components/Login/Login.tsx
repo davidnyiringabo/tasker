@@ -69,12 +69,12 @@ const Login = ()=>{
                           });
                       }
 
-                      console.log(response)
+                    //   console.log(response)
                       setFormEmail(formData.email)
-                      console.log(formEmail)
+                    //   console.log(formEmail)
   
                       document.cookie = `email=${formEmail}`
-                      console.log(document.cookie)
+                    //   console.log(document.cookie)
                 })
                 .catch((err)=>{
                   setLoading(false)
@@ -100,7 +100,7 @@ const Login = ()=>{
                         progress: undefined,
                         theme: "colored",
                         });
-                        console.log(err)
+                        // console.log(err)
                 })
     }
 
@@ -128,7 +128,7 @@ const Login = ()=>{
                     </div>
 
                     <div className="forgotPassword">
-                        <Link to="forgotPassword" className="forgotPasswordLink"><button type="button" className="forgotPasswordButton">forgot password</button></Link>
+                        <Link to="forgot-password" className="forgotPasswordLink"><button type="button" className="forgotPasswordButton">forgot password ?</button></Link>
                     </div>
 
                     <button type="submit" className="submit">{ !loading? "Login" : <GridLoader color={"#fff"} loading={loading} size={9} />}</button>

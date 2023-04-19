@@ -14,16 +14,6 @@ const SetingsPage = ()=>{
             setDarkMode(true)
     }
 
-    
-    // if(darkmode){
-    //     document.body.classList.add('darkMode');
-    //     // document.getElementById('maincontainer').style.background='#0F1E30'
-    //     // document.getElementById('dark').style.background='#001833'
-    // }
-    // else{
-    //     document.body.classList.remove('darkMode')
-    // }
-
     const setdarkMode = ()=>{
         document.querySelector("body")?.setAttribute("class","dark")
     }
@@ -32,6 +22,7 @@ const SetingsPage = ()=>{
     }
 
     const handleLogout = ()=>{
+        document.cookie = "email="
         toast.success("successfully logged out", {
             position: "top-right",
             autoClose: 2000,
@@ -41,13 +32,12 @@ const SetingsPage = ()=>{
             draggable: true,
             progress: undefined,
             theme: "colored",
-        })    }
+        })}
     return(
         <div className="settingsContainer">
             <div className="settings-header">
                 <h3>Settings</h3>
             </div>
-
             <div className="settingsContentContainer">
                     <div className="color-theme">
                         <h4>Change the color theme to: </h4>

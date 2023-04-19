@@ -34,7 +34,7 @@ const AllTasks = ({tasks}:Props)=>{
     !task.completed ?  
       axios.put(`${baseurl}/v1/api/updateAscompleted/${task._id}`)
             .then(response=>{
-              console.log(response)
+              // console.log(response)
               toast.success(response.data,{
                 position: "top-right",
                 autoClose: 2500,
@@ -60,7 +60,7 @@ const AllTasks = ({tasks}:Props)=>{
   const handledeleteTask = (id:any)=>{
     axios.get(`${baseurl}/v1/api/deleteTask/${id}`)
         .then((response)=>{
-        console.log(response.data)
+        // console.log(response.data)
         })
         setTimeout(()=> window.location.reload(),3000)
         toast.success("deleted successfully",{
@@ -97,7 +97,7 @@ const AllTasks = ({tasks}:Props)=>{
                               </div>
                               <div className="single-task-bottom-right">
                                 <button type='button' style={{border:'1px solid #0075FF',color:'#0075FF'}}  onClick={()=> handlecompletedTasks(task)}><img src={tick}/> Complete</button>
-                                <button type='button' style={{border:'1px solid #BA4A4A',color:'#BA4A4A'}}><img src={trash} onClick={()=> handledeleteTask(task._id)}/> Remove</button>
+                                <button type='button' style={{border:'1px solid #BA4A4A',color:'#BA4A4A'}} onClick={()=>handledeleteTask(task._id)}><img src={trash}/> Remove</button>
                               </div>
                             </div>
                         </div>
@@ -143,8 +143,6 @@ const AllTasks = ({tasks}:Props)=>{
                                   <div className="alltaskscontainer">
                                       <AllTasks tasks={tasks}/>
                                   </div>
-
-                                      
                                   </div>
                               </div>
                           </div>                         

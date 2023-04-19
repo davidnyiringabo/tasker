@@ -20,12 +20,12 @@ const AccountPage = ()=>{
             ...prevState,
             [name]: value
         }))
-        console.log(formData)
+        // console.log(formData)
     }
 
     const handleSubmit = (e:any)=>{
             e.preventDefault()
-            console.log("submitted")
+            // console.log("submitted")
             axios.put(`${baseurl}/v1/api/updateUser/${userEmail}`,formData)
                 .then(()=>{
                  toast.success("updated successfully",{
@@ -40,7 +40,7 @@ const AccountPage = ()=>{
                       });
                  })
                 .catch(err=>{
-                    console.log(err)
+                    // console.log(err)
                 })
 
                 setTimeout(()=> window.location.reload(),3000)

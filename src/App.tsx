@@ -15,6 +15,7 @@ import TermsPage from "./assets/components/Pages/Terms/Terms"
 import DataPolicyPage from './assets/components/Pages/data_Policy/DataPolicyPage'
 import AboutPage from './assets/components/Pages/about/About'
 import FeedbackPage from './assets/components/Pages/feedback/FeedbackPage'
+import ForgotPasswordPage from './assets/components/Pages/ForgotPassoword/ForgotPage'
 const baseurl = "https://tasker-jbnc.onrender.com"
 
 interface Task {
@@ -32,7 +33,7 @@ function App() {
   const cookie= document.cookie.split('=')
   const userLogginEmail = cookie[1]
 
-  console.log(userLogginEmail)
+  // console.log(userLogginEmail)
   const [tasks,setTasks] = useState<Task[]>([
   ]);
 
@@ -41,11 +42,11 @@ function App() {
     axios.get(`${baseurl}/v1/api/tasks/${userLogginEmail}`)
            .then((response)=>{
             const userTasks = response.data
-            console.log(response)
+            // console.log(response)
             setTasks(userTasks)
            })
            .catch(err=>{
-            console.log(err)
+            // console.log(err)
            })
   },[userLogginEmail])
 
@@ -66,6 +67,8 @@ function App() {
         <Route path='/data_policy' element={<Home tasks={tasks}><DataPolicyPage/></Home>}/>
         <Route path='/feedback' element={<Home tasks={tasks}><FeedbackPage/></Home>}/>
         <Route path='/about' element={<Home tasks={tasks}><AboutPage/></Home>}/>
+        <Route path='/login/forgot-password' element={<ForgotPasswordPage/>}/>
+        <Route path='/forgot-password' element={<ForgotPasswordPage/>}/>
         <Route path='/logout' element={<TermsPage/>}/>
       </Routes>
 </BrowserRouter>

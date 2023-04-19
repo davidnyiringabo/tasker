@@ -84,9 +84,7 @@ const Sidebars = ({children, tasks}: Props)=>{
 
         axios.post(`${baseurl}/v1/api/createTask`,addTaskFormData)
             .then(response=>{
-                setTimeout(()=>{
-                    window.location.reload()
-                },5000)
+                
                 response.status == 200 ? 
                 toast.success("task added", {
                     position: "top-right",
@@ -97,6 +95,9 @@ const Sidebars = ({children, tasks}: Props)=>{
                     draggable: true,
                     progress: undefined,
                     theme: "colored",
+                    onClose: setTimeout(()=>{
+                        window.location.reload()
+                    },1000)
                     })
                 :
                 toast.error("There was an error in creating the task", {
@@ -112,7 +113,7 @@ const Sidebars = ({children, tasks}: Props)=>{
 
             })
             .catch((err)=>{
-                console.log(err)
+                // console.log(err)
             })
     }
 
@@ -123,7 +124,7 @@ const Sidebars = ({children, tasks}: Props)=>{
           [name]: value,
         }))
 
-        console.log(addTaskFormData)
+        // console.log(addTaskFormData)
       }
     const [loading, setloading] = useState(false)
 
@@ -133,14 +134,14 @@ const Sidebars = ({children, tasks}: Props)=>{
 
      axios.get(`${baseurl}/v1/api/getUser/${userLogginEmail}`)
             .then((response)=>{
-                console.log(response)
+                // console.log(response)
                 setClient(response.data)
             })
             .catch(err=>{
-                console.log(err)
+                // console.log(err)
             })
 
-            console.log(document.readyState);
+            // console.log(document.readyState);
 
 
 
@@ -173,6 +174,12 @@ const Sidebars = ({children, tasks}: Props)=>{
         alignItems: "center",
         borderColor: "red",
       }
+      const closeModelAndSubmit = ()=>{
+        
+        setTimeout(()=> setOpenModel(!openModel),100)
+        handleAddTaskSubmit(Event)
+
+    }
     return(
         loading? 
         <HashLoader color={ "#fff"} cssOverride={override} loading={loading} size={80} />
@@ -239,7 +246,7 @@ const Sidebars = ({children, tasks}: Props)=>{
 
                                     </div>
 
-                                    <button type="submit" className="addTaskSubmit">Finish</button>
+                                    <button type="submit" className="addTaskSubmit" onClick={closeModelAndSubmit}>Finish</button>
 
                                 </form>
                             </div>
