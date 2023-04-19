@@ -95,10 +95,7 @@ const Sidebars = ({children, tasks}: Props)=>{
                     draggable: true,
                     progress: undefined,
                     theme: "colored",
-                    onClose: setTimeout(()=>{
-                        window.location.reload()
-                    },1000)
-                    })
+                })
                 :
                 toast.error("There was an error in creating the task", {
                     position: "top-right",
