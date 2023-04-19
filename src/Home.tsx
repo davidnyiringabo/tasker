@@ -88,7 +88,7 @@ const Sidebars = ({children, tasks}: Props)=>{
                 response.status == 200 ? 
                 toast.success("task added", {
                     position: "top-right",
-                    autoClose: 3000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
@@ -99,7 +99,7 @@ const Sidebars = ({children, tasks}: Props)=>{
                 :
                 toast.error("There was an error in creating the task", {
                     position: "top-right",
-                    autoClose: 3000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
@@ -172,10 +172,9 @@ const Sidebars = ({children, tasks}: Props)=>{
         borderColor: "red",
       }
       const closeModelAndSubmit = ()=>{
-        
+        setTimeout(()=> window.location.reload(), 4000)
         setTimeout(()=> setOpenModel(!openModel),100)
         handleAddTaskSubmit(Event)
-
     }
     return(
         loading? 
