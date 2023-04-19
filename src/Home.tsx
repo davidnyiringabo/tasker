@@ -172,9 +172,10 @@ const Sidebars = ({children, tasks}: Props)=>{
         borderColor: "red",
       }
       const closeModelAndSubmit = ()=>{
-        
+        setTimeout
         setTimeout(()=> setOpenModel(!openModel),100)
         handleAddTaskSubmit(Event)
+        setTimeout(()=> window.location.reload(), 2000)
 
     }
     return(
