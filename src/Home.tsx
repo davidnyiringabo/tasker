@@ -175,6 +175,7 @@ const Sidebars = ({children, tasks}: Props)=>{
         setTimeout(()=> window.location.reload(), 4000)
         setTimeout(()=> setOpenModel(!openModel),100)
         handleAddTaskSubmit(Event)
+
     }
     return(
         loading? 
