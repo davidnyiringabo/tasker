@@ -3,7 +3,7 @@ import "./accountpage.css"
 import userProfile from "/profileavatar.png"
 import axios from "axios"
 import { toast, ToastContainer } from "react-toastify"
-const baseurl = "http://localhost:7200"
+const baseurl = "https://tasker-jbnc.onrender.com"
 
 const AccountPage = ()=>{
 
@@ -20,14 +20,14 @@ const AccountPage = ()=>{
             ...prevState,
             [name]: value
         }))
-        // console.log(formData)
+        console.log(formData)
     }
 
     const handleSubmit = (e:any)=>{
             e.preventDefault()
-            // console.log("submitted")
             axios.put(`${baseurl}/v1/api/updateUser/${userEmail}`,formData)
                 .then(()=>{
+                setTimeout(()=> window.location.reload(),4000)
                  toast.success("updated successfully",{
                       position: "top-right",
                       autoClose: 2500,
@@ -40,10 +40,9 @@ const AccountPage = ()=>{
                       });
                  })
                 .catch(err=>{
-                    // console.log(err)
+                    console.log(err)
                 })
 
-                setTimeout(()=> window.location.reload(),3000)
     }
 
 

@@ -217,6 +217,7 @@
     align-items: center;
     justify-content: start;
     gap: 2%;
+    overflow-y: auto;
 }
 .recent-tasks-header{
     margin-bottom: 3%;
