@@ -7,45 +7,48 @@
 
 }
 
-.upper-container{
-    width: 50%;
-    height: 50%;
+.upper-reset-container{
+    width: 45%;
+    height: 70%;
     background: #072F5F;
     display: flex;
     flex-direction: column;
-    padding: 2% 3%;
     color: #fff;
-    /* align-items: center; */
-    /* justify-content: center; */
     border-radius: 10px;
-}
-.upper-container h2, .upper-container h5 , .upper-container h4{
-    padding: 2% 0;
+    padding: 2% 3%;
+    gap: 10%;
+
 }
 
-.upper-container form {
-    width: 80%;
-    height: 60%;
+.upper-reset-container form {
+    width: 100%;
+    height: 80%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 30%
-    ;
+    align-items: center;
+    gap: 10%;
+    text-align: left;
+    /* visibility: hidden; */
 }
-
-.upper-container form  input{
+.upper-reset-container form  h4{
     width: 90%;
-    height: 30%;
-    font-size: 17px;
-}
-.upper-container form input::placeholder{
+    text-align: left;
     font-size: 17px;
 }
 
-.upper-container form button{
+.upper-reset-container form  input{
+    width: 90%;
+    height: 15%;
+    font-size: 17px;
+}
+.upper-reset-container form input::placeholder{
+    font-size: 17px;
+}
+
+.upper-reset-container form button{
     width: 35%;
-    height: 30%;
+    height: 13%;
     background-color: #0075FF;
     border: none;
     border-radius: 10px;
@@ -70,12 +73,12 @@
     font-weight: 900;
     align-self: stretch;
 }
-.displayed-content{
+.display-error{
     width: 65%;
-    height: 30%;
-    font-size: 13px;
-    border-left: 9px solid #1ae342;
-    background: #32c34f79;
+    height: 15%;
+    font-size: 20px;
+    border-left: 9px solid #e31d1a;
+    background: #ec463458;
     display: flex;
     flex-direction: column;
     justify-content: center;

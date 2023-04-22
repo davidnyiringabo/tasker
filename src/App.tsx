@@ -16,6 +16,7 @@ import DataPolicyPage from './assets/components/Pages/data_Policy/DataPolicyPage
 import AboutPage from './assets/components/Pages/about/About'
 import FeedbackPage from './assets/components/Pages/feedback/FeedbackPage'
 import ForgotPasswordPage from './assets/components/Pages/ForgotPassoword/ForgotPage'
+import ResetPasswordPage from './assets/components/Pages/ForgotPassoword/ResetPassword'
 const baseurl = "https://tasker-jbnc.onrender.com"
 
 interface Task {
@@ -69,6 +70,7 @@ function App() {
         <Route path='/about' element={<Home tasks={tasks}><AboutPage/></Home>}/>
         <Route path='/login/forgot-password' element={<ForgotPasswordPage/>}/>
         <Route path='/forgot-password' element={<ForgotPasswordPage/>}/>
+        <Route path='/account-recovery/reset-password' element={<ResetPasswordPage/>}/>
         <Route path='/logout' element={<TermsPage/>}/>
       </Routes>
 </BrowserRouter>
