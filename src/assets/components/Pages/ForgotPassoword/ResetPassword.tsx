@@ -4,7 +4,7 @@ import axios from "axios"
 import {toast, ToastContainer} from "react-toastify"
 import { useState } from "react"
 import GridLoader from "react-spinners/GridLoader";
-const baseurl = "http://localhost:6500"
+const baseurl = "https://tasker-jbnc.onrender.com"
 
 
 const ResetPasswordPage = ()=>{
