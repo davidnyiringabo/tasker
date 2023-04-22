@@ -81,7 +81,7 @@ const Sidebars = ({children, tasks}: Props)=>{
 
     const handleAddTaskSubmit = (e:any)=>{
         e.preventDefault()
-
+        setTimeout(()=> window.location.reload(), 4000)
         axios.post(`${baseurl}/v1/api/createTask`,addTaskFormData)
             .then(response=>{
                 
@@ -172,7 +172,6 @@ const Sidebars = ({children, tasks}: Props)=>{
         borderColor: "red",
       }
       const closeModelAndSubmit = ()=>{
-        setTimeout(()=> window.location.reload(), 4000)
         setTimeout(()=> setOpenModel(!openModel),100)
         handleAddTaskSubmit(Event)
 
