@@ -9,6 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import GridLoader from "react-spinners/GridLoader";
 import axios from "axios"
 const baseurl = "https://tasker-jbnc.onrender.com"
+// const baseurl = "http://localhost:6500"
+
 
 const Signup = ()=>{
 

@@ -10,7 +10,9 @@ import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import GridLoader from "react-spinners/GridLoader";
 const formemail = "nyiringabodavid@gmail.com"
+// import {baseurl} from "../Services/credentials.js"
 const baseurl = "https://tasker-jbnc.onrender.com"
+// const baseurl = "http://localhost:6500"
 
 const Login = ()=>{
 
@@ -57,7 +59,7 @@ const Login = ()=>{
                    
                       }
                       else{
-                        toast.error('Invalid email. please create account', {
+                        toast.error('Invalid email or password.', {
                           position: "top-right",
                           autoClose: 5000,
                           hideProgressBar: false,
@@ -79,7 +81,7 @@ const Login = ()=>{
                 .catch((err)=>{
                   setLoading(false)
                    AxiosError.ERR_NOT_SUPPORT ? 
-                    toast.error("You entered a wrong password, create account instead", {
+                    toast.error("invalid email or password", {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,

@@ -23,9 +23,10 @@ import {toast} from "react-toastify"
 import GridLoader from "react-spinners/GridLoader";
 import { CSSProperties } from "react"
 import { HashLoader } from "react-spinners"
-import { Hidden } from "@mui/material"
 
 const baseurl = "https://tasker-jbnc.onrender.com"
+// const baseurl = "http://localhost:6500"
+
 
 interface Props{
     children: ReactNode,
@@ -131,19 +132,13 @@ const Sidebars = ({children, tasks}: Props)=>{
 
      axios.get(`${baseurl}/v1/api/getUser/${userLogginEmail}`)
             .then((response)=>{
-                // console.log(response)
                 setClient(response.data)
             })
             .catch(err=>{
-                // console.log(err)
             })
-
-            // console.log(document.readyState);
-
-
-
-      
     },[userLogginEmail])
+
+    console.log(client)
     const dateOb = new Date()
     const day = dateOb.getDate()
     const month = dateOb.getMonth()

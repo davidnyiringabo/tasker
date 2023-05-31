@@ -1,5 +1,3 @@
-import { Doughnut } from 'react-chartjs-2';
-import Chart from 'chart.js';
 import React, { useState } from 'react';
 import TasksComponents from "../../TasksComponets"
 import Chartco from '../../Charts/Line';
