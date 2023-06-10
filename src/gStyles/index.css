@@ -19,7 +19,7 @@
 
 }
 #root {
-  width: 98.7vw;
+  width: 100vw;
   min-height: 100vh;
   background: var(--bg-color);
   color: var(--font-color);

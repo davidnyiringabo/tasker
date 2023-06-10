@@ -122,8 +122,6 @@ const Sidebars = ({children, tasks}: Props)=>{
 
     useEffect( ()=>{
 
-    document.readyState == "loading" ? setloading(true) :setloading(false)
-
      axios.get(`${baseurl}/v1/api/getUser/${userLogginEmail}`)
             .then((response: { data: SetStateAction<{ _id: string; username: string; email: string; password: string; about: string }> })=>{
                 // console.log(response)
@@ -172,9 +170,6 @@ const Sidebars = ({children, tasks}: Props)=>{
 
     }
     return(
-        loading? 
-        <HashLoader color={ "#fff"} cssOverride={override} loading={loading} size={80} />
-        :
         <div className="container-main" >
             <div className="sidebar-left"> 
                 <div className="sidebar-header">
@@ -276,7 +271,7 @@ const Sidebars = ({children, tasks}: Props)=>{
                         <h6>{`${client.about ? client.about : "No description added yet"}`}</h6>
                     </div>
                     <div className="calendar-container">
-                        <LocalizationProvider dateAdapter={AdapterDayjs} classname="calender-main">
+                        <LocalizationProvider dateAdapter={AdapterDayjs} className="calender-main">
                             <DateCalendar showDaysOutsideCurrentMonth fixedWeekNumber={6} />
                         </LocalizationProvider>
                     </div>

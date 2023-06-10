@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
+import {lazy, useState, useEffect, Suspense } from 'react'
 import './gStyles/App.css'
-import Login from './Pages/Login/Login'
-import Signup from './Pages/Signup/Signup'
+
+const Login = lazy(()=> import("./Pages/Login/Login"))
+const Signup = lazy(()=> import("./Pages/Signup/Signup"))
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Page from './components/RenderedComponents/Calendar/Calendar'
 import Home from './Home'
@@ -18,6 +19,7 @@ import FeedbackPage from './Pages/feedback/FeedbackPage'
 import ForgotPasswordPage from './Pages/ForgotPassoword/ForgotPage'
 import ResetPasswordPage from './Pages/ForgotPassoword/ResetPassword'
 import {baseurl} from "./data/api"
+import PageLoader from "./components/Loaders/PageLoader"
 
 
 interface Task {
@@ -51,9 +53,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Login/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/signup' element={<Signup/>}/>
+        <Route path='/' element={<Suspense fallback={<PageLoader/>}><PageLoader/></Suspense>}/>
+        <Route path='/login' element={<Suspense fallback={<PageLoader/>}><Login/></Suspense>}/>
+        <Route path='/signup' element={<Suspense fallback={<PageLoader/>}><Signup/></Suspense>}/>
         <Route path='/main' element={<Home tasks={tasks}><Overview tasks={tasks}/></Home>}/>
         <Route path='/main/overview' element={<Home tasks={tasks}><Overview tasks={tasks}/></Home>}/>
         <Route path='/main/calendar' element={<Home tasks={tasks}><Page tasks= {tasks}/></Home>}/>

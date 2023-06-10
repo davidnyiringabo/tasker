@@ -11,6 +11,10 @@
     justify-content: center;
     align-items: center;
   }
+  .centered{
+    display: flex;
+    justify-content: center;
+  }
   
   .header{
     width: 100%;
@@ -154,4 +158,8 @@ input::placeholder{
     color: #fff;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     cursor: pointer;
+}
+
+.no-overscroll{
+    overflow: hidden !important;
 }
