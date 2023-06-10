@@ -271,7 +271,7 @@ const Sidebars = ({children, tasks}: Props)=>{
                         <h6>{`${client.about ? client.about : "No description added yet"}`}</h6>
                     </div>
                     <div className="calendar-container">
-                        <LocalizationProvider dateAdapter={AdapterDayjs} className="calender-main">
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DateCalendar showDaysOutsideCurrentMonth fixedWeekNumber={6} />
                         </LocalizationProvider>
                     </div>
