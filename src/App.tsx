@@ -46,6 +46,16 @@ function App() {
            .then((response)=>{
             const userTasks = response.data
             setTasks(userTasks)
+            
+            const tasksObjects = response.data.map((task)=>{
+              return {
+                ... task,
+                "read":false
+              }
+            })
+
+            localStorage.setItem("taskerTasks", JSON.stringify(tasksObjects))
+            localStorage.clearItem("taskerTaskers")
            })
            .catch(err=>{
            })

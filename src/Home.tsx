@@ -27,7 +27,8 @@ import {baseurl} from "./data/api"
 
 interface Props{
     children: ReactNode,
-    tasks: Task[]
+    tasks: Task[],
+    selectedButton: []
 }
 
 interface Task {
@@ -40,7 +41,12 @@ interface Task {
     timestamp: number;
 }
 
-const Sidebars = ({children, tasks}: Props)=>{
+const selected = document.getElementsByTagName('button');
+const selectedButton = Array.from(selected).filter((single)=> single.getAttribute('aria-selected') === 'true');
+
+console.log(selectedButton)
+
+const Sidebars = ({children, tasks, selectedButton}: Props)=>{
     const [client, setClient] = useState({
         _id: '',
         username: '',
@@ -155,15 +161,6 @@ const Sidebars = ({children, tasks}: Props)=>{
     const handleSearch = (e:any)=>{
         setSearch(e.target.value)
     }
-    const override: CSSProperties = {
-        width: "96vw",
-        height: "50vh",
-        overflow: "hidden",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        borderColor: "red",
-      }
       const closeModelAndSubmit = ()=>{
         setTimeout(()=> setOpenModel(!openModel),100)
         handleAddTaskSubmit(Event)

@@ -24,6 +24,7 @@
   background: var(--bg-color);
   color: var(--font-color);
   font-size: 15px;
+  overflow-x: hidden;
 }
 *{
   margin: 0;
