@@ -8,7 +8,7 @@ import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import GridLoader from "react-spinners/GridLoader";
 import axios from "axios"
-import {baseurl} from "../../../data/api"
+import {baseurl} from "../../data/api"
 
 
 const Signup = ()=>{

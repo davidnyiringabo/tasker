@@ -10,7 +10,7 @@ import AllTasks from "./AllTasks"
 import { useNavigate } from "react-router-dom"
 import {toast} from "react-toastify"
 import { ToastContainer } from "react-toastify"
-import {baseurl} from "../../data/api"
+import {baseurl} from "../data/api"
 
 
 interface Props{

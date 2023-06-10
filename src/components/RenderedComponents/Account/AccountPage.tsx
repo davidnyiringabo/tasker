@@ -3,7 +3,7 @@ import "./accountpage.css"
 import userProfile from "/profileavatar.png"
 import axios from "axios"
 import { toast, ToastContainer } from "react-toastify"
-import {baseurl} from "../../../../data/api"
+import {baseurl} from "../../../data/api"
 
 
 const AccountPage = ()=>{

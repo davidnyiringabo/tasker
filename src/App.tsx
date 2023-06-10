@@ -1,22 +1,22 @@
 import { useState, useEffect } from 'react'
-import './App.css'
-import Login from './assets/components/Login/Login'
-import Signup from './assets/components/Signup/Signup'
+import './gStyles/App.css'
+import Login from './Pages/Login/Login'
+import Signup from './Pages/Signup/Signup'
 import {BrowserRouter, Routes, Route} from "react-router-dom"
-import Page from './assets/components/RenderedComponents/Calendar/Calendar'
+import Page from './components/RenderedComponents/Calendar/Calendar'
 import Home from './Home'
-import Overview from "./assets/components/RenderedComponents/Overview/Overview"
-import TasksPage from './assets/components/RenderedComponents/Tasks/TasksPage'
-import AccountPage from './assets/components/RenderedComponents/Account/AccountPage'
-import SettingsPage from "./assets/components/RenderedComponents/Settings/Settings"
-import NotificationsPage from './assets/components/RenderedComponents/Notifications/Notifications'
+import Overview from "./components/RenderedComponents/Overview/Overview"
+import TasksPage from './components/RenderedComponents/Tasks/TasksPage'
+import AccountPage from './components/RenderedComponents/Account/AccountPage'
+import SettingsPage from './components/RenderedComponents/Settings/Settings'
+import NotificationsPage from './components/RenderedComponents/Notifications/Notifications'
 import axios from 'axios'
-import TermsPage from "./assets/components/Pages/Terms/Terms"
-import DataPolicyPage from './assets/components/Pages/data_Policy/DataPolicyPage'
-import AboutPage from './assets/components/Pages/about/About'
-import FeedbackPage from './assets/components/Pages/feedback/FeedbackPage'
-import ForgotPasswordPage from './assets/components/Pages/ForgotPassoword/ForgotPage'
-import ResetPasswordPage from './assets/components/Pages/ForgotPassoword/ResetPassword'
+import TermsPage from './Pages/Terms/Terms'
+import DataPolicyPage from './Pages/data_Policy/DataPolicyPage'
+import AboutPage from './Pages/about/About'
+import FeedbackPage from './Pages/feedback/FeedbackPage'
+import ForgotPasswordPage from './Pages/ForgotPassoword/ForgotPage'
+import ResetPasswordPage from './Pages/ForgotPassoword/ResetPassword'
 import {baseurl} from "./data/api"
 
 

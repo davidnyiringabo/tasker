@@ -9,7 +9,7 @@ import {useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import GridLoader from "react-spinners/GridLoader";
-import {baseurl} from "../../../data/api"
+import {baseurl} from "../../data/api"
 const formemail = "nyiringabodavid@gmail.com"
 
 const Login = ()=>{
@@ -139,18 +139,18 @@ const Login = ()=>{
    
         </div>
 
-        <ToastContainer
-    position="top-right"
-    autoClose={5000}
-    hideProgressBar={false}
-    newestOnTop={false}
-    closeOnClick
-    rtl={false}
-    pauseOnFocusLoss
-    draggable
-    pauseOnHover
-    theme="colored"
-/>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
 
         </div>
         

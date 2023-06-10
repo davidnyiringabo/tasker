@@ -1,5 +1,5 @@
 import Logo from "/Logo.png"
-import "./home.css"
+import "./gStyles/home.css"
 import {Link,NavLink} from "react-router-dom"
 import Check from "/check-circle.png"
 import overview from "/chart-column-solid1.png"

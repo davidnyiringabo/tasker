@@ -10,7 +10,7 @@ import {toast} from "react-toastify"
 import { useNavigate } from "react-router-dom"
 import Homedot from "/homedot.png"
 import learningdot from "/learningdot.png"
-import {baseurl} from "../../data/api"
+import {baseurl} from "../data/api"
 
 
 
