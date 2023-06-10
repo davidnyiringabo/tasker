@@ -8,7 +8,8 @@ import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import GridLoader from "react-spinners/GridLoader";
 import axios from "axios"
-const baseurl = "https://tasker-jbnc.onrender.com"
+import {baseurl} from "../../../data/api"
+
 
 const Signup = ()=>{
 
@@ -65,8 +66,7 @@ const Signup = ()=>{
                       theme: "colored",
                       });
                   }
-
-                  document.cookie = `email=${formEmail}`
+                  localStorage.setItem('taskerUserEmail', formEmail)
                  })
                     
                 .catch((err)=>{

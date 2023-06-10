@@ -10,7 +10,8 @@ import {toast} from "react-toastify"
 import { useNavigate } from "react-router-dom"
 import Homedot from "/homedot.png"
 import learningdot from "/learningdot.png"
-const baseurl = "https://tasker-jbnc.onrender.com"
+import {baseurl} from "../../data/api"
+
 
 
 interface Task {

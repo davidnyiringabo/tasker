@@ -1,7 +1,6 @@
 import Logo from "/Logo.png"
 import "./home.css"
-import {BrowserRouter as Router, Routes, Route,Link,NavLink} from "react-router-dom"
-import Page from "./assets/components/RenderedComponents/Calendar/Calendar"
+import {Link,NavLink} from "react-router-dom"
 import Check from "/check-circle.png"
 import overview from "/chart-column-solid1.png"
 import tasksImg from "/Group5.png"
@@ -16,16 +15,15 @@ import profilePic from "/profileavatar.png"
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
-import { useState,useEffect, ReactNode } from "react"
+import { useState,useEffect, ReactNode, SetStateAction } from "react"
 import crossx from "/x-circle.png"
 import axios from "axios"
 import {toast} from "react-toastify"
-import GridLoader from "react-spinners/GridLoader";
 import { CSSProperties } from "react"
 import { HashLoader } from "react-spinners"
-import { Hidden } from "@mui/material"
 
-const baseurl = "https://tasker-jbnc.onrender.com"
+import {baseurl} from "./data/api"
+
 
 interface Props{
     children: ReactNode,
@@ -50,11 +48,10 @@ const Sidebars = ({children, tasks}: Props)=>{
         password:'',
         about:''
     })
-    const cookie= document.cookie.split('=')
-    const userLogginEmail = cookie[1]
+    const userLogginEmail = localStorage.getItem("taskerUserEmail")
 
     const [openModel, setOpenModel] = useState(false)
-
+    
     const toggleModel = ()=>{
         setOpenModel(!openModel)
     }
@@ -83,7 +80,7 @@ const Sidebars = ({children, tasks}: Props)=>{
         e.preventDefault()
         setTimeout(()=> window.location.reload(), 4000)
         axios.post(`${baseurl}/v1/api/createTask`,addTaskFormData)
-            .then(response=>{
+            .then((response: any )=>{
                 
                 response.status == 200 ? 
                 toast.success("task added", {
@@ -109,8 +106,7 @@ const Sidebars = ({children, tasks}: Props)=>{
                     })
 
             })
-            .catch((err)=>{
-                // console.log(err)
+            .catch((err: any)=>{
             })
     }
 
@@ -121,7 +117,6 @@ const Sidebars = ({children, tasks}: Props)=>{
           [name]: value,
         }))
 
-        // console.log(addTaskFormData)
       }
     const [loading, setloading] = useState(false)
 
@@ -130,11 +125,11 @@ const Sidebars = ({children, tasks}: Props)=>{
     document.readyState == "loading" ? setloading(true) :setloading(false)
 
      axios.get(`${baseurl}/v1/api/getUser/${userLogginEmail}`)
-            .then((response)=>{
+            .then((response: { data: SetStateAction<{ _id: string; username: string; email: string; password: string; about: string }> })=>{
                 // console.log(response)
                 setClient(response.data)
             })
-            .catch(err=>{
+            .catch(()=>{
                 // console.log(err)
             })
 

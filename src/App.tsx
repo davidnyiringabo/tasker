@@ -17,7 +17,8 @@ import AboutPage from './assets/components/Pages/about/About'
 import FeedbackPage from './assets/components/Pages/feedback/FeedbackPage'
 import ForgotPasswordPage from './assets/components/Pages/ForgotPassoword/ForgotPage'
 import ResetPasswordPage from './assets/components/Pages/ForgotPassoword/ResetPassword'
-const baseurl = "https://tasker-jbnc.onrender.com"
+import {baseurl} from "./data/api"
+
 
 interface Task {
   _id: string;
@@ -31,10 +32,8 @@ interface Task {
 
 function App() {
   const [viewAllTasksModal,setViewAllTasksModal] = useState(false) 
-  const cookie= document.cookie.split('=')
-  const userLogginEmail = cookie[1]
+  const userLogginEmail = localStorage.getItem("taskerUserEmail")
 
-  // console.log(userLogginEmail)
   const [tasks,setTasks] = useState<Task[]>([
   ]);
 
@@ -43,11 +42,9 @@ function App() {
     axios.get(`${baseurl}/v1/api/tasks/${userLogginEmail}`)
            .then((response)=>{
             const userTasks = response.data
-            // console.log(response)
             setTasks(userTasks)
            })
            .catch(err=>{
-            // console.log(err)
            })
   },[userLogginEmail])
 

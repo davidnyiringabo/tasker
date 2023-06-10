@@ -9,8 +9,8 @@ import {useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import GridLoader from "react-spinners/GridLoader";
+import {baseurl} from "../../../data/api"
 const formemail = "nyiringabodavid@gmail.com"
-const baseurl = "https://tasker-jbnc.onrender.com"
 
 const Login = ()=>{
 
@@ -69,12 +69,8 @@ const Login = ()=>{
                           });
                       }
 
-                    //   console.log(response)
                       setFormEmail(formData.email)
-                    //   console.log(formEmail)
-  
-                      document.cookie = `email=${formEmail}`
-                    //   console.log(document.cookie)
+                      localStorage.setItem('taskerUserEmail', formEmail)
                 })
                 .catch((err)=>{
                   setLoading(false)
