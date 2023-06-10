@@ -3,21 +3,22 @@ import './gStyles/App.css'
 
 const Login = lazy(()=> import("./Pages/Login/Login"))
 const Signup = lazy(()=> import("./Pages/Signup/Signup"))
+const Page = lazy(()=> import("./components/RenderedComponents/Calendar/Calendar"))
+import Home from "./Home"
+const Overview = lazy(()=> import("./components/RenderedComponents/Overview/Overview"))
+const TasksPage = lazy(()=> import("./components/RenderedComponents/Tasks/TasksPage"))
+const AccountPage = lazy(()=> import("./components/RenderedComponents/Account/AccountPage"))
+const SettingsPage = lazy(()=> import("./components/RenderedComponents/Settings/Settings"))
+const NotificationsPage = lazy(()=> import("./components/RenderedComponents/Notifications/Notifications"))
+const TermsPage = lazy(()=> import("./Pages/Terms/Terms"))
+const DataPolicyPage = lazy(()=> import("./Pages/data_Policy/DataPolicyPage"))
+const AboutPage = lazy(()=> import("./Pages/about/About"))
+const FeedbackPage = lazy(()=> import("./Pages/feedback/FeedbackPage"))
+const ForgotPasswordPage = lazy(()=> import("./Pages/ForgotPassoword/ForgotPage"))
+const ResetPasswordPage = lazy(()=> import("./Pages/ForgotPassoword/ResetPassword"))
+import Loader from "./components/Loaders/Loader"
 import {BrowserRouter, Routes, Route} from "react-router-dom"
-import Page from './components/RenderedComponents/Calendar/Calendar'
-import Home from './Home'
-import Overview from "./components/RenderedComponents/Overview/Overview"
-import TasksPage from './components/RenderedComponents/Tasks/TasksPage'
-import AccountPage from './components/RenderedComponents/Account/AccountPage'
-import SettingsPage from './components/RenderedComponents/Settings/Settings'
-import NotificationsPage from './components/RenderedComponents/Notifications/Notifications'
 import axios from 'axios'
-import TermsPage from './Pages/Terms/Terms'
-import DataPolicyPage from './Pages/data_Policy/DataPolicyPage'
-import AboutPage from './Pages/about/About'
-import FeedbackPage from './Pages/feedback/FeedbackPage'
-import ForgotPasswordPage from './Pages/ForgotPassoword/ForgotPage'
-import ResetPasswordPage from './Pages/ForgotPassoword/ResetPassword'
 import {baseurl} from "./data/api"
 import PageLoader from "./components/Loaders/PageLoader"
 
@@ -56,21 +57,21 @@ function App() {
         <Route path='/' element={<Suspense fallback={<PageLoader/>}><Login/></Suspense>}/>
         <Route path='/login' element={<Suspense fallback={<PageLoader/>}><Login/></Suspense>}/>
         <Route path='/signup' element={<Suspense fallback={<PageLoader/>}><Signup/></Suspense>}/>
-        <Route path='/main' element={<Home tasks={tasks}><Overview tasks={tasks}/></Home>}/>
-        <Route path='/main/overview' element={<Home tasks={tasks}><Overview tasks={tasks}/></Home>}/>
-        <Route path='/main/calendar' element={<Home tasks={tasks}><Page tasks= {tasks}/></Home>}/>
-        <Route path='/main/settings' element={<Home tasks={tasks}><SettingsPage/></Home>}/>
-        <Route path='/main/tasks' element={<Home tasks={tasks}><TasksPage viewAllTasksModal={viewAllTasksModal} setViewAllTasksModal={setViewAllTasksModal} tasks={tasks} /></Home>}/>
-        <Route path='/main/account' element={<Home tasks={tasks}><AccountPage/></Home>}/>
-        <Route path='/main/notifications' element={<Home tasks={tasks}><NotificationsPage tasks={tasks}/></Home>}/>
-        <Route path='/terms_of_Service' element={<Home tasks={tasks}><TermsPage/></Home>}/>
-        <Route path='/data_policy' element={<Home tasks={tasks}><DataPolicyPage/></Home>}/>
-        <Route path='/feedback' element={<Home tasks={tasks}><FeedbackPage/></Home>}/>
-        <Route path='/about' element={<Home tasks={tasks}><AboutPage/></Home>}/>
-        <Route path='/login/forgot-password' element={<ForgotPasswordPage/>}/>
-        <Route path='/forgot-password' element={<ForgotPasswordPage/>}/>
-        <Route path='/account-recovery/reset-password' element={<ResetPasswordPage/>}/>
-        <Route path='/logout' element={<TermsPage/>}/>
+        <Route path='/main' element={<Home tasks={tasks}><Suspense fallback={<Loader/>}><Overview tasks={tasks}/></Suspense></Home>}/>
+        <Route path='/main/overview' element={<Home tasks={tasks}><Suspense fallback={<Loader/>}><Overview tasks={tasks}/></Suspense></Home>}/>
+        <Route path='/main/calendar' element={<Home tasks={tasks}><Suspense fallback={<Loader/>}><Page tasks= {tasks}/></Suspense></Home>}/>
+        <Route path='/main/settings' element={<Home tasks={tasks}><Suspense fallback={<Loader/>}><SettingsPage/></Suspense></Home>}/>
+        <Route path='/main/tasks' element={<Home tasks={tasks}><Suspense fallback={<Loader/>}><TasksPage viewAllTasksModal={viewAllTasksModal} setViewAllTasksModal={setViewAllTasksModal} tasks={tasks} /></Suspense></Home>}/>
+        <Route path='/main/account' element={<Home tasks={tasks}><Suspense fallback={<Loader/>}><AccountPage/></Suspense></Home>}/>
+        <Route path='/main/notifications' element={<Home tasks={tasks}><Suspense fallback={<Loader/>}><NotificationsPage tasks={tasks}/></Suspense></Home>}/>
+        <Route path='/terms_of_Service' element={<Home tasks={tasks}><Suspense fallback={<Loader/>}><TermsPage/></Suspense></Home>}/>
+        <Route path='/data_policy' element={<Home tasks={tasks}><Suspense fallback={<Loader/>}><DataPolicyPage/></Suspense></Home>}/>
+        <Route path='/feedback' element={<Home tasks={tasks}><Suspense fallback={<Loader/>}><FeedbackPage/></Suspense></Home>}/>
+        <Route path='/about' element={<Home tasks={tasks}><Suspense fallback={<Loader/>}><AboutPage/></Suspense></Home>}/>
+        <Route path='/login/forgot-password' element={<Suspense fallback={<Loader/>}><ForgotPasswordPage/></Suspense>}/>
+        <Route path='/forgot-password' element={<Suspense fallback={<Loader/>}><ForgotPasswordPage/></Suspense>}/>
+        <Route path='/account-recovery/reset-password' element={<Suspense fallback={<Loader/>}><ResetPasswordPage/></Suspense>}/>
+        <Route path='/logout' element={<Suspense fallback={<PageLoader/>}><TermsPage/></Suspense>}/>
       </Routes>
 </BrowserRouter>
   )

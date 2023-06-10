@@ -19,7 +19,6 @@ const PageLoader = ()=>{
                 loading={loading}
                 cssOverride={override}
                 size={17}
-                className='centered'
             />
         </div>
     )
