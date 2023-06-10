@@ -53,7 +53,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Suspense fallback={<PageLoader/>}><PageLoader/></Suspense>}/>
+        <Route path='/' element={<Suspense fallback={<PageLoader/>}><Login/></Suspense>}/>
         <Route path='/login' element={<Suspense fallback={<PageLoader/>}><Login/></Suspense>}/>
         <Route path='/signup' element={<Suspense fallback={<PageLoader/>}><Signup/></Suspense>}/>
         <Route path='/main' element={<Home tasks={tasks}><Overview tasks={tasks}/></Home>}/>
