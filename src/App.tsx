@@ -55,7 +55,6 @@ function App() {
             })
 
             localStorage.setItem("taskerTasks", JSON.stringify(tasksObjects))
-            localStorage.clearItem("taskerTaskers")
            })
            .catch(err=>{
            })

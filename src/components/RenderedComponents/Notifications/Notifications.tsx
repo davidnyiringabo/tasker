@@ -15,21 +15,8 @@ interface Props{
     timestamp: number
   }
 
-const NotificationsPage = ({tasks:Props})=>{
-    const taskObject = {
-        category:"",
-        completed:false,
-        deadline_day:"",
-        deadline_time:"",
-        description:"",
-        email:"",
-        read:false,
-        timestamp: null
-    }
+const NotificationsPage = ({tasks}:Props)=>{
 
-    const tasks = [
-
-    ]
     
     const [userTasks,setUserTasks] = useState(tasks)
 
