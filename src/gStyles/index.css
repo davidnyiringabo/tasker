@@ -24,11 +24,11 @@
   background: var(--bg-color);
   color: var(--font-color);
   font-size: 15px;
-  overflow-x: hidden;
 }
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: Poppins;
 }
 
