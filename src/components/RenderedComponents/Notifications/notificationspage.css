@@ -50,7 +50,7 @@
     justify-content: center;
     background: #e4ecf5;
     padding-left: 2%;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
 }
 .singleNotification h5{
     color: #333;

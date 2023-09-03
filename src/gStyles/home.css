@@ -38,7 +38,7 @@
     display: flex;
     align-items: center;
     justify-content: left;
-    font-size: 20px;
+    /* font-size: 20px; */
     color: #fff;
     font-family: Smooch;
 
@@ -58,7 +58,7 @@
     flex-direction: column;
     align-items: center;
     gap: 2%;
-    font-size: 18px;
+    /* font-size: 18px; */
     color: #fff;
 
 
@@ -192,10 +192,10 @@
 }
 .upper-card h6{
     color: #5d5b5b;
-    font-size: 16px;
+    /* font-size: 16px; */
 }
 .upper-card h3{
-    font-size: 23px;
+    /* font-size: 23px; */
 }
 .calendar-container{
     width: 90% !important;
@@ -221,7 +221,7 @@
 }
 .recent-tasks-header{
     margin-bottom: 3%;
-    font-size: 19px;
+    /* font-size: 19px; */
     font-family: Poppins;
     color: #0F1E30;
 }
@@ -399,7 +399,7 @@ body.active-model {
 .description{
     width: 100%;
     height: 30%;
-    font-size: 18px;
+    /* font-size: 18px; */
     font-weight: 400;
     display: flex;
     flex-direction: column;
@@ -429,11 +429,11 @@ body.active-model {
     height: 70%;
     border: 2px solid #777777b4;
     color: rgba(0, 0, 0, 0.379);
-    font-size: 17px;
+    /* font-size: 17px; */
 }
 .description input::placeholder{
     color: black;
-    font-size: 17px;
+    /* font-size: 17px; */
 }
 
 .category{
@@ -473,7 +473,7 @@ body.active-model {
     border-radius: 8px;
     
     font-weight: 700;
-    font-size: 17px;
+    /* font-size: 17px; */
     margin-top: 1%;
 }
 

@@ -44,7 +44,7 @@
     /* margin-top: 5%; */
     border-radius: 10px;
     color: #fff;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 
 }
 
@@ -61,13 +61,13 @@
         width: 20%;
     }
     header h1{
-        font-size: 17px;
+        /* font-size: 17px; */
     }
 }
 header{
     margin-top: 3%;
     text-align: center;
-    font-size: 23px;
+    /* font-size: 23px; */
     font-weight: 700;
     /* font-family: sans-serif; */
     /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
@@ -93,7 +93,6 @@ header{
 }
 
 .form-control label{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 input{
     width: 90%;
@@ -104,13 +103,12 @@ input{
     outline: none;
     padding-left: 10px;
     color: #fff;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
 
 input::placeholder{
     color: #fff;
-    font-size: 15px;
+    /* font-size: 15px; */
 }
 .forgotPassword{
     width: 80%;
@@ -121,7 +119,6 @@ input::placeholder{
     background-color: transparent;
     border: none;
     color: #fff;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     cursor: pointer;
 
 }
@@ -131,9 +128,8 @@ input::placeholder{
     border-radius: 8px;
     background: #0075FF;
     color: #fff;
-    font-size: 15px;
+    /* font-size: 15px; */
     margin: 3% auto;
-    font-family: sans-serif;
     font-weight: 700;
     border: 0;
 }
@@ -145,18 +141,16 @@ input::placeholder{
 }
 .footer h5{
     font-weight: 200;
-    font-family: sans-serif;
 }
 .footer a{
     color: #0075FF;
     text-decoration: none;
-    font-size: 14px;
+    /* font-size: 14px; */
 }
 
 .forgotpasswordLink{
     text-decoration: none;
     color: #fff;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     cursor: pointer;
 }
 
