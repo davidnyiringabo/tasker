@@ -484,3 +484,82 @@ body.active-model {
         width: 90%;
     }
 }
+
+
+/* -----------------------------------STYLING A CALENDER-------------------------------------------------------------------------- */
+
+.MuiDateCalendar-root {
+    width: 97% !important;
+    height: 90% !important;
+    max-height: 100% !important;
+    margin: 0 !important;
+    border-radius: 10px;
+    justify-content: center !important;
+    padding: 0 1%;
+}
+.MuiPickersCalendarHeader-root{
+    color: var(--font-color);
+}
+.MuiDateCalendar-root > div:nth-child(2) {
+    height: 100%;
+}
+
+.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1){
+    height: 100% !important;
+    width: 100% !important;
+}
+/* remove > div:nth-child(1) before grid */
+.MuiDateCalendar-root> div:nth-child(2) > div:nth-child(1) > div[role="grid"] {
+    height: 100% !important;
+}
+
+.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1) > div[role="grid"] > div[role="row"] {
+    justify-content: space-between;
+}
+
+
+.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1) > div[role="grid"] > div[role="row"] > span { 
+    font-weight: bold !important;
+}
+
+.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1) > div[role="grid"] > div[role="row"] > span:nth-child(6) , span:nth-child(7){ 
+    color: #17A1FA;
+    font-weight: bold !important;
+}
+
+
+.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1) > div[role="grid"] > div:nth-child(2) {
+    height: 89%;
+}
+
+.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1) > div[role="grid"] > div:nth-child(2) > div[role="rowgroup"] {
+    justify-content: space-between;
+    height: 100%;
+    gap: 5%;
+}
+
+.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1) >  div[role="grid"] > div:nth-child(2) > div[role="rowgroup"] > div[role="row"] {
+    justify-content: space-between;
+}
+
+.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1) >  div[role="grid"] > div:nth-child(2) > div[role="rowgroup"] > div[role="row"] > button {
+    /* justify-content: space-between; */
+    /* border: 1px solid; */
+    margin: 0.4% 0;
+}
+
+.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1) >  div[role="grid"] > div:nth-child(2) > div[role="rowgroup"] > div[role="row"] > button:nth-child(6), button:nth-child(7){
+    color: #17A1FA;
+    font-weight: 600;
+}
+
+.MuiDateCalendar-root > div:nth-child(2)  > div:nth-child(1) div[role="grid"] > div:nth-child(2) > div[role="rowgroup"] > div[role="row"] > button[aria-current="date"] {
+    border: none;
+    background: #0075FF;
+    color: #fff;
+    font-weight: 900;
+}
+
+button[aria-selected="true"]{
+    background: #023c7eab !important;
+}

@@ -9,10 +9,14 @@ import {useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import GridLoader from "react-spinners/GridLoader";
+import {baseurl} from "../../data/api"
 const formemail = "nyiringabodavid@gmail.com"
+<<<<<<< HEAD:src/assets/components/Login/Login.tsx
 // import {baseurl} from "../Services/credentials.js"
 const baseurl = "https://tasker-jbnc.onrender.com"
 // const baseurl = "http://localhost:6500"
+=======
+>>>>>>> 0c4fa73ad973dcc12e5479c42cfbc71cc1ff9304:src/Pages/Login/Login.tsx
 
 const Login = ()=>{
 
@@ -71,12 +75,8 @@ const Login = ()=>{
                           });
                       }
 
-                    //   console.log(response)
                       setFormEmail(formData.email)
-                    //   console.log(formEmail)
-  
-                      document.cookie = `email=${formEmail}`
-                    //   console.log(document.cookie)
+                      localStorage.setItem('taskerUserEmail', formEmail)
                 })
                 .catch((err)=>{
                   setLoading(false)
@@ -145,18 +145,18 @@ const Login = ()=>{
    
         </div>
 
-        <ToastContainer
-    position="top-right"
-    autoClose={5000}
-    hideProgressBar={false}
-    newestOnTop={false}
-    closeOnClick
-    rtl={false}
-    pauseOnFocusLoss
-    draggable
-    pauseOnHover
-    theme="colored"
-/>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
 
         </div>
         

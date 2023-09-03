@@ -1,7 +1,6 @@
 import Logo from "/Logo.png"
-import "./home.css"
-import {BrowserRouter as Router, Routes, Route,Link,NavLink} from "react-router-dom"
-import Page from "./assets/components/RenderedComponents/Calendar/Calendar"
+import "./gStyles/home.css"
+import {Link,NavLink} from "react-router-dom"
 import Check from "/check-circle.png"
 import overview from "/chart-column-solid1.png"
 import tasksImg from "/Group5.png"
@@ -16,21 +15,20 @@ import profilePic from "/profileavatar.png"
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
-import { useState,useEffect, ReactNode } from "react"
+import { useState,useEffect, ReactNode, SetStateAction } from "react"
 import crossx from "/x-circle.png"
 import axios from "axios"
 import {toast} from "react-toastify"
-import GridLoader from "react-spinners/GridLoader";
 import { CSSProperties } from "react"
 import { HashLoader } from "react-spinners"
 
-const baseurl = "https://tasker-jbnc.onrender.com"
-// const baseurl = "http://localhost:6500"
+import {baseurl} from "./data/api"
 
 
 interface Props{
     children: ReactNode,
-    tasks: Task[]
+    tasks: Task[],
+    selectedButton: []
 }
 
 interface Task {
@@ -43,7 +41,12 @@ interface Task {
     timestamp: number;
 }
 
-const Sidebars = ({children, tasks}: Props)=>{
+const selected = document.getElementsByTagName('button');
+const selectedButton = Array.from(selected).filter((single)=> single.getAttribute('aria-selected') === 'true');
+
+console.log(selectedButton)
+
+const Sidebars = ({children, tasks, selectedButton}: Props)=>{
     const [client, setClient] = useState({
         _id: '',
         username: '',
@@ -51,11 +54,10 @@ const Sidebars = ({children, tasks}: Props)=>{
         password:'',
         about:''
     })
-    const cookie= document.cookie.split('=')
-    const userLogginEmail = cookie[1]
+    const userLogginEmail = localStorage.getItem("taskerUserEmail")
 
     const [openModel, setOpenModel] = useState(false)
-
+    
     const toggleModel = ()=>{
         setOpenModel(!openModel)
     }
@@ -84,7 +86,7 @@ const Sidebars = ({children, tasks}: Props)=>{
         e.preventDefault()
         setTimeout(()=> window.location.reload(), 4000)
         axios.post(`${baseurl}/v1/api/createTask`,addTaskFormData)
-            .then(response=>{
+            .then((response: any )=>{
                 
                 response.status == 200 ? 
                 toast.success("task added", {
@@ -110,8 +112,7 @@ const Sidebars = ({children, tasks}: Props)=>{
                     })
 
             })
-            .catch((err)=>{
-                // console.log(err)
+            .catch((err: any)=>{
             })
     }
 
@@ -122,19 +123,18 @@ const Sidebars = ({children, tasks}: Props)=>{
           [name]: value,
         }))
 
-        // console.log(addTaskFormData)
       }
     const [loading, setloading] = useState(false)
 
     useEffect( ()=>{
 
-    document.readyState == "loading" ? setloading(true) :setloading(false)
-
      axios.get(`${baseurl}/v1/api/getUser/${userLogginEmail}`)
-            .then((response)=>{
+            .then((response: { data: SetStateAction<{ _id: string; username: string; email: string; password: string; about: string }> })=>{
+                // console.log(response)
                 setClient(response.data)
             })
-            .catch(err=>{
+            .catch(()=>{
+                // console.log(err)
             })
     },[userLogginEmail])
 
@@ -157,24 +157,12 @@ const Sidebars = ({children, tasks}: Props)=>{
     const handleSearch = (e:any)=>{
         setSearch(e.target.value)
     }
-    const override: CSSProperties = {
-        width: "96vw",
-        height: "50vh",
-        overflow: "hidden",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        borderColor: "red",
-      }
       const closeModelAndSubmit = ()=>{
         setTimeout(()=> setOpenModel(!openModel),100)
         handleAddTaskSubmit(Event)
 
     }
     return(
-        loading? 
-        <HashLoader color={ "#fff"} cssOverride={override} loading={loading} size={80} />
-        :
         <div className="container-main" >
             <div className="sidebar-left"> 
                 <div className="sidebar-header">
@@ -276,7 +264,7 @@ const Sidebars = ({children, tasks}: Props)=>{
                         <h6>{`${client.about ? client.about : "No description added yet"}`}</h6>
                     </div>
                     <div className="calendar-container">
-                        <LocalizationProvider dateAdapter={AdapterDayjs} classname="calender-main">
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DateCalendar showDaysOutsideCurrentMonth fixedWeekNumber={6} />
                         </LocalizationProvider>
                     </div>

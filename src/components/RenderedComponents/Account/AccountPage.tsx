@@ -3,7 +3,8 @@ import "./accountpage.css"
 import userProfile from "/profileavatar.png"
 import axios from "axios"
 import { toast, ToastContainer } from "react-toastify"
-const baseurl = "https://tasker-jbnc.onrender.com"
+import {baseurl} from "../../../data/api"
+
 
 const AccountPage = ()=>{
 

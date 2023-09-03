@@ -16,6 +16,8 @@ interface Props{
   }
 
 const NotificationsPage = ({tasks}:Props)=>{
+
+    
     const [userTasks,setUserTasks] = useState(tasks)
 
     const [read, setRead] = useState(false)
@@ -33,18 +35,10 @@ const NotificationsPage = ({tasks}:Props)=>{
 
     const dayDate = `${thisyeah}-0${thisMonthNumber+1}-${todayDateNumber}`
     userTasks.sort((a,b)=> b.deadline_day.localeCompare(a.deadline_day))
-    // console.log(userTasks)
 
     const clearNotifications = ()=>{
         setUserTasks([])
     }
-
-    // useEffect(()=>{
-    //         const time = new Date()
-    //         const currentTime = time.getTime()
-    //         console.log(currentTime)
-    // },[new Date().getMilliseconds()])
-    // console.log(dayDate > tasks[0].deadline_day)
     return(
         <div className="notificationsContainer">
             <div className="notificationscontainer-header">

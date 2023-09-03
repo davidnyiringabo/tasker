@@ -19,7 +19,7 @@
 
 }
 #root {
-  width: 98.7vw;
+  width: 100vw;
   min-height: 100vh;
   background: var(--bg-color);
   color: var(--font-color);
@@ -28,6 +28,7 @@
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: Poppins;
 }
 
