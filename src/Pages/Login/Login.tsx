@@ -2,7 +2,7 @@ import "./login.css"
 import {Link} from "react-router-dom"
 import Logo from "/Logo.png"
 import axios, { AxiosError } from "axios"
-import { ChangeEvent } from "react"
+import { ChangeEvent, useEffect } from "react"
 import { useState, CSSProperties } from "react"
 import { toast } from "react-toastify"
 import {useNavigate } from "react-router-dom"
@@ -21,6 +21,10 @@ const Login = ()=>{
         email:'',
         password:''
       })
+    useEffect(()=>{
+      const email =  localStorage.getItem("taskerUserEmail")
+      navigate("/main/overview")
+    },[])
     const [loading, setLoading] = useState(false)
     const handleChange = (e:any) => {
         const { name, value } = e.target;
