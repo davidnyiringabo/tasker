@@ -23,6 +23,7 @@ const SetingsPage = ()=>{
 
     const handleLogout = ()=>{
         document.cookie = "email="
+        localStorage.removeItem("taskerUserEmail")
         toast.success("successfully logged out", {
             position: "top-right",
             autoClose: 2000,

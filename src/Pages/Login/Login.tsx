@@ -23,7 +23,9 @@ const Login = ()=>{
       })
     useEffect(()=>{
       const email =  localStorage.getItem("taskerUserEmail")
-      navigate("/main/overview")
+      if(email){
+        navigate("/main/overview")
+      }
     },[])
     const [loading, setLoading] = useState(false)
     const handleChange = (e:any) => {
