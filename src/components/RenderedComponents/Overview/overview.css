@@ -50,6 +50,15 @@
     background: rgb(236, 88, 88);
 }
 
+canvas[role="img"]{
+    width: 100% !important;
+    height: 80% !important;
+    /* margin-top: 2%; */
+}
+.button-data-policy, .access-data-button, .terms-of-services, .about-button, .logout-button{
+    width: 40% !important;
+}
+
 @media (max-width: 760px){
     .chartContainer{
         flex-direction: column;
@@ -93,6 +102,42 @@
     }
     .container-right{
         width: 89%;
+    }
+
+    /*  setting media  */
+    .settings-header{
+        height: 5%;
+    }
+    .settingsContentContainer{
+        height: 90%;
+    }
+    .color-theme{
+        flex-direction: column;
+        height: 20% !important;
+        align-items: flex-start;
+    }
+    .color-theme > button{
+        width: 40%;
+        height: 30%;
+        margin: 2% 0;
+    }
+    .uploadPhoto{
+        flex-direction: column;
+    }
+    .uploadPhoto > img{
+        height: 50%;
+    }
+    .data-policy,.access-data,.terms-of-service,.about,.logout, .feedback{
+        height: 10% !important;
+    }
+    .button-data-policy, .access-data-button, .terms-of-services, .about-button, .logout-button{
+        width: 50% !important;
+    }
+    .right-upload-photo{
+        width: 90% !important;
+    }
+    .uploadProfileSubmit{
+        width: 35% !important;
     }
 }
 

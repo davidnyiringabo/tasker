@@ -1,6 +1,6 @@
 import Logo from "/Logo.png"
 import "./gStyles/home.css"
-import {Link,NavLink} from "react-router-dom"
+import {Link,NavLink, useNavigate} from "react-router-dom"
 import Check from "/check-circle.png"
 import overview from "/chart-column-solid1.png"
 import tasksImg from "/Group5.png"
@@ -44,8 +44,6 @@ interface Task {
 const selected = document.getElementsByTagName('button');
 const selectedButton = Array.from(selected).filter((single)=> single.getAttribute('aria-selected') === 'true');
 
-console.log(selectedButton)
-
 const Home = ({children, tasks, selectedButton}: Props)=>{
     const [client, setClient] = useState({
         _id: '',
@@ -54,6 +52,7 @@ const Home = ({children, tasks, selectedButton}: Props)=>{
         password:'',
         about:''
     })
+    const navigate = useNavigate()
     const userLogginEmail = localStorage.getItem("taskerUserEmail")
 
     const [openModel, setOpenModel] = useState(false)
@@ -127,18 +126,19 @@ const Home = ({children, tasks, selectedButton}: Props)=>{
     const [loading, setloading] = useState(false)
 
     useEffect( ()=>{
+    
+     if(!userLogginEmail){
+        navigate("/login")
+     }
 
      axios.get(`${baseurl}/v1/api/getUser/${userLogginEmail}`)
             .then((response: { data: SetStateAction<{ _id: string; username: string; email: string; password: string; about: string }> })=>{
-                // console.log(response)
                 setClient(response.data)
             })
-            .catch(()=>{
-                // console.log(err)
-            })
+            // .catch(()=>{
+            // })
     },[userLogginEmail])
-
-    console.log(client)
+    
     const dateOb = new Date()
     const day = dateOb.getDate()
     const month = dateOb.getMonth()

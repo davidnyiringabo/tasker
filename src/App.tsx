@@ -40,9 +40,6 @@ function App() {
   const [tasks,setTasks] = useState<Task[]>([
   ]);
 
-  console.log(userLogginEmail)
-  console.log(tasks)
-
   useEffect( ()=>{
 
     axios.get(`${baseurl}/v1/api/tasks/${userLogginEmail}`)

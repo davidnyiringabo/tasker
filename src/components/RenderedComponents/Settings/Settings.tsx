@@ -75,11 +75,12 @@ const SetingsPage = ()=>{
                     <div className="about" >
                             <button className="about-button">
                                 <Link to={"/about"} style={{width:'100%',height:'100%',padding:'1%',display:'flex',alignItems:'center',textDecoration:'none'}}>
-                                        <img src={aboutImg} style={{width:'20%'}}/>about
+                                        {/* <img src={aboutImg} style={{width:'20%'}}/> */}
+                                        about
                                 </Link>
                             </button>
                     </div>
-                    <div className="about" >
+                    <div className="feedback" >
                     <button className="about-button">
                         <Link to={"/feedback"} style={{width:'100%',height:'100%',padding:'1%',display:'flex',alignItems:'center',textDecoration:'none'}}>
                                feedback
@@ -89,7 +90,8 @@ const SetingsPage = ()=>{
                     <div className="logout" >
                             <button type="button" className="logout-button">
                                 <Link to={"/"} style={{width:'100%',height:'100%',padding:'1%',display:'flex',alignItems:'center',textDecoration:'none'}} onClick={()=> handleLogout()}>
-                                        <img src={logoutImg} style={{width:'20%'}}/>Logout
+                                        {/* <img src={logoutImg} style={{width:'20%'}}/> */}
+                                        Logout
                                 </Link>
                             </button>
                     </div>
