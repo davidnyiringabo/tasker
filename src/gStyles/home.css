@@ -574,15 +574,38 @@ button[aria-selected="true"]{
 .small-right-side-container{
     position: absolute;
     right: 2%;
-    top: 10%;
+    top: 7%;
     width: 70vw;
     height: 80%;
+    animation: animateCalendar 0.2s ease-in;
+}
+.smll-sidebar-left > .sidebar-header > a{
+    width: 50% !important;
 }
 .smll-sidebar-left{
     position: absolute;
     left: 0;
     width: 50vw;
     background: var(--bg-color);
+    border-radius: 5px;
+    top: 7%;
+    animation: animateMenu 0.2s ease-in-out;
+}
+@keyframes animateCalendar{
+    from{
+        right: -60%;
+    }
+    to{
+        right: 2%;
+    }
+}
+@keyframes animateMenu{
+    from{
+        left: -60%;
+    }
+    to{
+        left: 0%;
+    }
 }
 canvas[role="img"]{
     width: 100% !important;
@@ -590,7 +613,7 @@ canvas[role="img"]{
     /* margin-top: 2%; */
 }
 .smll-scrn-nvimg, .button-container > div > button > img{
-    width: 40% !important;
+    width: 30% !important;
     margin: 0 !important;
 }
 
@@ -674,6 +697,16 @@ canvas[role="img"]{
     .uploadProfileSubmit{
         width: 35% !important;
     }
+    .viewTasksmodelContent{
+        width: 80%;
+    }
+    .alltaskscontainer{
+        width: 95%;
+    }
+    .viewAllTasksContainer > .singleTask{
+        height: 60% !important;
+        padding: 2% auto !important;
+    }
 }
 
 @media (max-width: 600px){
@@ -683,10 +716,16 @@ canvas[role="img"]{
     .hero-container{
         width: 97%;
     }
+    .viewTasksmodelContent{
+        width: 95%;
+    }
 }
 
 .sml-scr-header{
     display: none;
+}
+.singleTask, .singleAlltask{
+    height: 36% !important;
 }
 
 @media (max-width: 430px){
@@ -694,15 +733,24 @@ canvas[role="img"]{
         width: 98%;
         margin: auto;
     }
+    .renderedpageContainer{
+        height:83%;
+    }
     .naigationBar{
         height: 8% !important;
     }
     .sidebar-left{
         display: none;
     }
-    /* .overviewTasksContainer{
-
-    } */
+    .chartContainer{
+        height: 52% !important;
+    }
+    .overviewTasksContainer-main{
+        height: 70% !important;
+    }
+    .singleTask, .singleAlltask{
+        height: 46% !important;
+    }
     .sml-scr-header{
         display: flex;
         height: 8%;

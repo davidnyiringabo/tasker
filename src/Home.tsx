@@ -12,6 +12,7 @@ import plus from "/plus.png"
 import NotifiImg from "/bell.png"
 import SearchButton from "/search.png"
 import menuIcon from "./assets/menu.png"
+import userIcon from "./assets/user.png"
 import profilePic from "/profileavatar.png"
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -22,9 +23,9 @@ import axios from "axios"
 import {toast} from "react-toastify"
 import { CSSProperties } from "react"
 import { HashLoader } from "react-spinners"
-
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 import {baseurl} from "./data/api"
-
 
 interface Props{
     children: ReactNode,
@@ -249,9 +250,9 @@ const Home = ({children, tasks, selectedButton}: Props)=>{
                             </Link>
                             <h4>Tasker</h4>
                         </div>
-                        <div>
-                            <img src={menuIcon} width={20} height={20} onClick={()=> setOpenMenu(!openMenu)}/>
-                            <img src={menuIcon} width={20} height={20} onClick={()=> setOpenCalendarMenu(!openCalendarMenu)}/>
+                        <div style={{width: "19%",display: "flex", justifyContent: "space-between"}}>
+                            <img src={menuIcon} width={30} height={25} onClick={()=> setOpenMenu(!openMenu)}/>
+                            <img src={userIcon} width={25} height={25} onClick={()=> setOpenCalendarMenu(!openCalendarMenu)}/>
                         </div>
 
                     </div>
@@ -334,7 +335,7 @@ const Home = ({children, tasks, selectedButton}: Props)=>{
                             <Link to={"/main"}>
                                 <img src={Logo} style={{width:'100%'}}/>
                             </Link>
-                            <h4>Tasker</h4>
+                            <h4 style={{display: "inline"}}>Tasker</h4>
         
                         </div>
 
@@ -413,6 +414,18 @@ const Home = ({children, tasks, selectedButton}: Props)=>{
                 )}
 
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
         </div>
     )
 }
