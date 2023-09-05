@@ -11,6 +11,7 @@ import settingsTopImg from "/settings(1).svg"
 import plus from "/plus.png"
 import NotifiImg from "/bell.png"
 import SearchButton from "/search.png"
+import menuIcon from "./assets/menu.png"
 import profilePic from "/profileavatar.png"
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -138,7 +139,7 @@ const Home = ({children, tasks, selectedButton}: Props)=>{
             // .catch(()=>{
             // })
     },[userLogginEmail])
-    
+
     const dateOb = new Date()
     const day = dateOb.getDate()
     const month = dateOb.getMonth()
@@ -162,6 +163,10 @@ const Home = ({children, tasks, selectedButton}: Props)=>{
         handleAddTaskSubmit(Event)
 
     }
+
+    const [openCalendarMenu, setOpenCalendarMenu] = useState(false)
+    const [openMenu, setOpenMenu] = useState(false)
+
     return(
         <div className="container-main" >
             <div className="sidebar-left"> 
@@ -237,6 +242,19 @@ const Home = ({children, tasks, selectedButton}: Props)=>{
             <div className="container-right" id="maincontainer">
                 {/* -----------------------THIS IS GOING TO BE DYNAMICALLY RENDERED----------------------------------- */}
                 <div className="hero-container">
+                    <div className="sml-scr-header">
+                        <div className="sidebar-header2">
+                            <Link to={"/main"}>
+                                <img src={Logo} style={{width:'100%'}}/>
+                            </Link>
+                            <h4>Tasker</h4>
+                        </div>
+                        <div>
+                            <img src={menuIcon} width={20} height={20} onClick={()=> setOpenMenu(!openMenu)}/>
+                            <img src={menuIcon} width={20} height={20} onClick={()=> setOpenCalendarMenu(!openCalendarMenu)}/>
+                        </div>
+
+                    </div>
                     <div className="naigationBar">
                         <div className="searchContainer">
                             <a href={`https://www.google.com/search?q=${search}`} target={"_blank"}><img src={SearchButton}/></a>
@@ -309,6 +327,90 @@ const Home = ({children, tasks, selectedButton}: Props)=>{
                     }
                     </div>
                 </div>
+
+                {openMenu && (
+                    <div className="smll-sidebar-left"> 
+                        <div className="sidebar-header">
+                            <Link to={"/main"}>
+                                <img src={Logo} style={{width:'100%'}}/>
+                            </Link>
+                            <h4>Tasker</h4>
+        
+                        </div>
+
+                        <div className="button-container">
+                            <div className="side-upper">
+                                <NavLink to="/main/overview" className="link"> <button type="button" className="overview side-button"><img src={overview} className="smll-scrn-nvimg"/><h6>Overview</h6></button></NavLink>
+                                <NavLink to="/main/tasks" className="link" style={{width:'100%',height:'20%',display:'flex',justifyContent:'center',textDecoration:'none'}}><button type="button" className="tasks side-button"><img src={tasksImg} className="smll-scrn-nvimg"/><h6>Tasks</h6></button></NavLink>
+                                <NavLink to="/main/calendar" className="link" style={{width:'100%',height:'20%',display:'flex',justifyContent:'center',textDecoration:'none'}}><button type="button" className="calender side-button"><img src={calender} className="smll-scrn-nvimg"/><h6>Calender</h6></button></NavLink>
+                            </div>
+        
+                            <div className="side-middle">
+                                <button type="button" className="add_tasks side-button-middle" onClick={toggleModel}><img src={plus}/><h6>add task</h6></button>
+                            </div>
+        
+                            <div className="side-bottom">
+                                <NavLink to="/main/account" className="link-bottom"><button type="button" className="account side-button-bottom"><img src={user} className="smll-scrn-nvimg"/><h6>Account</h6></button></NavLink>
+                                <NavLink to="/main/settings" className="link-bottom"><button type="button" className="settings side-button-bottom"><img src={settings} className="smll-scrn-nvimg"/><h6>Settings</h6></button></NavLink>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {openCalendarMenu && (
+                    <div className="small-right-side-container">
+                        <div className="upper-card">
+                            <img src={profilePic}/>
+                            <h3>{client.username}</h3>
+                            <h6>{`${client.about ? client.about : "No description added yet"}`}</h6>
+                        </div>
+                        <div className="calendar-container">
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <DateCalendar showDaysOutsideCurrentMonth fixedWeekNumber={6} />
+                            </LocalizationProvider>
+                        </div>
+                        <div className="recent-tasks">
+                            <h4 className="recent-tasks-header">Tasks for today</h4>
+                            {tasksForToday.length >= 4? tasksForToday.map(task=>{
+                                return(
+                                <div className="single-recent-task">
+                                        <img src={Check}/>
+                                        <h5>{task.description}</h5>
+                                        <h6>at {task.deadline_time}</h6>
+
+                                    </div>
+                                )
+                            }):
+                            tasksForToday.length == 3? tasksForToday.map(task=>{
+                                return(
+                                    <div className="single-recent-task">
+                                        <img src={Check}/>
+                                        <h5>{task.description}</h5>
+                                        <h6>at {task.deadline_time}</h6>
+                                    </div>
+                                )
+
+                            }):
+                            tasksForToday.length == 2? tasksForToday.map(task=>{
+                                return(
+                                    <div className="single-recent-task">
+                                        <img src={Check}/>
+                                        <h5>{task.description}</h5>
+                                        <h6>at {task.deadline_time}</h6>
+                                    </div>
+                                )
+                            }):
+                            tasksForToday.length == 1?  
+                            <div className="single-recent-task">
+                                <img src={Check}/>
+                                <h4>{tasksForToday[0].description}</h4>
+                                <h6>at {tasksForToday[0].deadline_time}</h6>
+                            </div>
+                            :<h3>There is no task for today</h3>
+                        }
+                        </div>
+                    </div>
+                )}
 
             </div>
         </div>

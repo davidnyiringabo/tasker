@@ -24,7 +24,8 @@
     display: flex;
     position: relative;
 }
-.sidebar-left{
+.sidebar-left, 
+.smll-sidebar-left{
     width: 20vw;
     height: 90%;
     display: flex;
@@ -32,7 +33,7 @@
     align-items: center;
 }
 
-.sidebar-header{
+.sidebar-header,.sidebar-header2{
     width: 100%;
     height: 15%;
     display: flex;
@@ -43,7 +44,9 @@
     font-family: Smooch;
 
 }
-.sidebar-header Link h4{
+.sidebar-header Link h4,
+.sidebar-header2 Link h4
+{
     text-decoration: none;
     color: #EEF3F9;
     display: flex;
@@ -170,7 +173,7 @@
     height: 100%;
 }
 
-.right-side-container{
+.right-side-container, .small-right-side-container{
     width: 30%;
     height: 97%;
     /* border: 1px solid orange; */
@@ -566,4 +569,158 @@ body.active-model {
 
 button[aria-selected="true"]{
     background: #023c7eab !important;
+}
+
+.small-right-side-container{
+    position: absolute;
+    right: 2%;
+    top: 10%;
+    width: 70vw;
+    height: 80%;
+}
+.smll-sidebar-left{
+    position: absolute;
+    left: 0;
+    width: 50vw;
+    background: var(--bg-color);
+}
+canvas[role="img"]{
+    width: 100% !important;
+    height: 80% !important;
+    /* margin-top: 2%; */
+}
+.smll-scrn-nvimg, .button-container > div > button > img{
+    width: 40% !important;
+    margin: 0 !important;
+}
+
+@media (max-width: 760px){
+    .chartContainer{
+        flex-direction: column;
+        height: 55%;
+    }
+    .overviewTasksContainer{
+        height: 45%;
+    }
+    .left-chart{
+        width: 100% !important;
+        height: 40%;
+    }
+    .right-chart{
+        width: 100% !important;
+        height: 60%;
+    }
+}
+
+@media (max-width: 700px){
+    .sidebar-left{
+        width: 10vw;
+    }
+    .sidebar-header > h4{
+        display: none;
+    }
+    .button-container >  div > a > button > p,
+    .button-container >  div > button > p
+    {
+        display: none;
+    }
+    .button-container >  div > a > button > img,
+    .button-container >  div > button > img,
+    .side-button-bottom img 
+    {
+        width: 80%;
+        height: 50%;
+        margin: auto;
+    }
+    .sidebar-header >a{
+        width: 100%;   
+    }
+    .container-right{
+        width: 89%;
+    }
+
+    /*  setting media  */
+    .settings-header{
+        height: 5%;
+    }
+    .settingsContentContainer{
+        height: 90%;
+    }
+    .color-theme{
+        flex-direction: column;
+        height: 20% !important;
+        align-items: flex-start;
+    }
+    .color-theme > button{
+        width: 40%;
+        height: 30%;
+        margin: 2% 0;
+    }
+    .uploadPhoto{
+        flex-direction: column;
+    }
+    .uploadPhoto > img{
+        height: 50%;
+    }
+    .data-policy,.access-data,.terms-of-service,.about,.logout, .feedback{
+        height: 10% !important;
+    }
+    .button-data-policy, .access-data-button, .terms-of-services, .about-button, .logout-button{
+        width: 50% !important;
+    }
+    .right-upload-photo{
+        width: 90% !important;
+    }
+    .uploadProfileSubmit{
+        width: 35% !important;
+    }
+}
+
+@media (max-width: 600px){
+    .right-side-container{
+        display: none;
+    }
+    .hero-container{
+        width: 97%;
+    }
+}
+
+.sml-scr-header{
+    display: none;
+}
+
+@media (max-width: 430px){
+    .container-right{
+        width: 98%;
+        margin: auto;
+    }
+    .naigationBar{
+        height: 8% !important;
+    }
+    .sidebar-left{
+        display: none;
+    }
+    /* .overviewTasksContainer{
+
+    } */
+    .sml-scr-header{
+        display: flex;
+        height: 8%;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 3%;
+    }
+    .sml-scr-header > .sidebar-header,
+    .sml-scr-header > .sidebar-header2{
+        width: 60% !important;
+        height: 100%;
+    } 
+    .sml-scr-header > .sidebar-header  > a,
+    .sml-scr-header > .sidebar-header2 > a{
+        width: 20%;
+    }
+    .sml-scr-header > .sidebar-header2 > h4{
+        color: #000 !important;
+        font-size: 120%;
+    }
 }
