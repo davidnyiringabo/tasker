@@ -116,7 +116,7 @@ const Login = ()=>{
 
             <div className="mainContainer">
            
-                <header>Welcome back</header>
+                <header style={{display:"block"}}>Welcome back</header>
                 <form className="loginForm" onSubmit={handleSubmit}>
 
                     <div className="form-control">
