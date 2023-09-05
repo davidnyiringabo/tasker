@@ -66,7 +66,7 @@ const TasksContainer = ({tasks}:Props)=>{
     }
     const firstTasks = [ tasks[0], tasks[1]]
     return(
-        <div className='overviewTasksContainer'>
+        <div className='overviewTasksContainer-main'>
                     {tasks.length > 1 ? firstTasks.map((task:any)=>{
                       return(
                     

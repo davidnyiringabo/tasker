@@ -32,6 +32,7 @@
   }
   .header h1{
     margin-left: -2%;
+    font-size: 150%;
   }
 .mainContainer{
     width: 40%;
@@ -48,6 +49,7 @@
 
 }
 
+
 @media(max-width: 900px) {
     .mainContainer{
         width: 60%;
@@ -55,23 +57,20 @@
 }
 @media(max-width:600px){
     .mainContainer{
-        width: 80%;
+        width: 90%;
     }
     .logo-img{
         width: 20%;
     }
-    header h1{
-        /* font-size: 17px; */
+    header{
+        display: none;
     }
 }
 header{
-    margin-top: 3%;
+    /* margin-top: 3%; */
     text-align: center;
-    /* font-size: 23px; */
+    font-size: 120%;
     font-weight: 700;
-    /* font-family: sans-serif; */
-    /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-
 }
 .loginForm, .signupForm{
     width: 90%;
@@ -92,23 +91,25 @@ header{
     gap: 10%;
 }
 
-.form-control label{
-}
+/* .form-control label{
+} */
+
 input{
     width: 90%;
-    height: 50%;
+    height: 70%;
     border-radius: 7px;
     background-color: transparent;
     border: 1px solid #fff;
     outline: none;
     padding-left: 10px;
     color: #fff;
+    font-size: 90%;
 
 }
 
 input::placeholder{
     color: #fff;
-    /* font-size: 15px; */
+    font-size: 90%;
 }
 .forgotPassword{
     width: 80%;
@@ -120,6 +121,7 @@ input::placeholder{
     border: none;
     color: #fff;
     cursor: pointer;
+    font-size: 90%;
 
 }
 .submit{

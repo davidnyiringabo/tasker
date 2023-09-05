@@ -133,7 +133,7 @@ const Login = ()=>{
                         <Link to="forgot-password" className="forgotPasswordLink"><button type="button" className="forgotPasswordButton">forgot password ?</button></Link>
                     </div>
 
-                    <button type="submit" className="submit">{ !loading? "Login" : <GridLoader color={"#fff"} loading={loading} size={9} />}</button>
+                    <button type="submit" className="submit">{ !loading? "Login" : <GridLoader color={"#fff"} loading={loading} size={6} />}</button>
 
                     <div className="footer">
                         <h5>Not yet joined ? </h5>

@@ -46,7 +46,7 @@ const selectedButton = Array.from(selected).filter((single)=> single.getAttribut
 
 console.log(selectedButton)
 
-const Sidebars = ({children, tasks, selectedButton}: Props)=>{
+const Home = ({children, tasks, selectedButton}: Props)=>{
     const [client, setClient] = useState({
         _id: '',
         username: '',
@@ -166,7 +166,7 @@ const Sidebars = ({children, tasks, selectedButton}: Props)=>{
         <div className="container-main" >
             <div className="sidebar-left"> 
                 <div className="sidebar-header">
-                    <Link to={"/main"} style={{width:'50%',marginRight:'-10%'}}>
+                    <Link to={"/main"}>
                         <img src={Logo} style={{width:'100%'}}/>
                     </Link>
                     <h4>Tasker</h4>
@@ -175,18 +175,18 @@ const Sidebars = ({children, tasks, selectedButton}: Props)=>{
 
                 <div className="button-container">
                     <div className="side-upper">
-                    <NavLink to="/main/overview" className="link"> <button type="button" className="overview side-button"><img src={overview}/>Overview</button></NavLink>
-                    <NavLink to="/main/tasks" className="link" style={{width:'100%',height:'20%',display:'flex',justifyContent:'center',textDecoration:'none'}}><button type="button" className="tasks side-button"><img src={tasksImg}/>Tasks</button></NavLink>
-                    <NavLink to="/main/calendar" className="link" style={{width:'100%',height:'20%',display:'flex',justifyContent:'center',textDecoration:'none'}}><button type="button" className="calender side-button"><img src={calender}/>Calender</button></NavLink>
+                        <NavLink to="/main/overview" className="link"> <button type="button" className="overview side-button"><img src={overview}/><p>Overview</p></button></NavLink>
+                        <NavLink to="/main/tasks" className="link" style={{width:'100%',height:'20%',display:'flex',justifyContent:'center',textDecoration:'none'}}><button type="button" className="tasks side-button"><img src={tasksImg}/><p>Tasks</p></button></NavLink>
+                        <NavLink to="/main/calendar" className="link" style={{width:'100%',height:'20%',display:'flex',justifyContent:'center',textDecoration:'none'}}><button type="button" className="calender side-button"><img src={calender}/><p>Calender</p></button></NavLink>
                     </div>
 
                     <div className="side-middle">
-                    <button type="button" className="add_tasks side-button-middle" onClick={toggleModel}><img src={plus}/>add task</button>
+                        <button type="button" className="add_tasks side-button-middle" onClick={toggleModel}><img src={plus}/><p>add task</p></button>
                     </div>
 
                     <div className="side-bottom">
-                    <NavLink to="/main/account" className="link-bottom"><button type="button" className="account side-button-bottom"><img src={user}/>Account</button></NavLink>
-                    <NavLink to="/main/settings" className="link-bottom"><button type="button" className="settings side-button-bottom"><img src={settings}/>Settings</button></NavLink>
+                        <NavLink to="/main/account" className="link-bottom"><button type="button" className="account side-button-bottom"><img src={user}/><p>Account</p></button></NavLink>
+                        <NavLink to="/main/settings" className="link-bottom"><button type="button" className="settings side-button-bottom"><img src={settings}/><p>Settings</p></button></NavLink>
                     </div>
                 </div>
             </div>
@@ -316,4 +316,4 @@ const Sidebars = ({children, tasks, selectedButton}: Props)=>{
 }
 
 
-export default Sidebars;
+export default Home;
